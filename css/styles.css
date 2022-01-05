@@ -1,0 +1,154 @@
+.my-align-header-items-middle {
+    display: flex;
+    align-items: center;
+}
+
+.my-header-background {
+    background-color: #c2c5c6;
+}
+
+.my-menu-buttons {
+    color: #605f5f;
+    font-size: 100%;
+    font-weight: bold;
+    padding-top: 38pt;
+}
+
+.nav-item > a:link, .nav-item > a:visited {
+    color: #605f5f
+}
+
+.nav-item > a:hover {
+    color: #ffffff
+}
+
+.nav-item > a:active {
+    color: #ffffff
+}
+
+#topHeader {
+    height: 45pt;
+}
+
+#bottomHeader {
+    height: 94pt;
+}
+
+#archive {
+    color: white;
+    font-size: 100%;
+}
+
+#geolocations {
+    color: black;
+    background-color: #339191;
+    font-size: 100%;
+}
+
+#languages {
+    font-size: 100%;
+    font-weight: bold;
+    color: #9b9b9b;
+}
+
+#logo {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 38pt;
+}
+
+#ruButton {
+    padding-right: 10px;
+    padding-left: 20px;
+}
+
+#enButton {
+    padding-right: 0;
+    padding-left: 10px;
+}
+
+#menuButton1{
+
+}
+#menuButton2{
+
+}
+#menuButton3{
+
+}
+
+@media screen and (max-width: 575px) {
+    #logo {
+        text-align: center;
+        padding-top: 25pt;
+    }
+
+    #topHeader {
+        display: none;
+    }
+
+    .my-menu-buttons {
+        display: flex;
+        background-color: #c2c5c6;
+        justify-content: center;
+    }
+
+    .navbar-nav > li {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+    .my-menu-buttons {
+        font-size: 85%;
+    }
+
+    .navbar-nav > li{
+        margin-left:5px;
+        margin-right:5px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .navbar-nav > li{
+        margin-left:10px;
+        margin-right:10px;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1279px) {
+    .navbar-nav > li{
+        margin-left:35px;
+        margin-right:35px;
+    }
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1599px) {
+    .navbar-nav > li{
+        margin-left:50px;
+        margin-right:50px;
+    }
+}
+
+@media screen and (min-width: 1600px) and (max-width: 1919px) {
+    .navbar-nav > li{
+        margin-left:85px;
+        margin-right:85px;
+    }
+}
+
+@media screen and (min-width: 1920px) and (max-width: 2559px){
+    .navbar-nav > li{
+        margin-left:100px;
+        margin-right:100px;
+    }
+}
+
+@media screen and (min-width: 2560px) and (max-width: 3840px){
+    .navbar-nav > li{
+        margin-left:150px;
+        margin-right:150px;
+    }
+}
