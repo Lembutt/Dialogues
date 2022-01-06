@@ -1,3 +1,9 @@
+@import url('http://fonts.cdnfonts.com/css/myriad-pro');
+
+body {
+    font-family: 'Myriad Pro', sans-serif !important;
+}
+
 .my-align-header-items-middle {
     display: flex;
     align-items: center;
@@ -7,11 +13,26 @@
     background-color: #c2c5c6;
 }
 
+.geo-button {
+    height: 100%;
+    width: 12.5%;
+    transition-duration: 0.5s;
+}
+
+.geo-button:hover {
+    width: 28.5%;
+}
+
 .my-menu-buttons {
     color: #605f5f;
     font-size: 100%;
     font-weight: bold;
     padding-top: 38pt;
+}
+
+.my-main-wave {
+    margin-left: -12px;
+    height: 150pt;
 }
 
 .nav-item > a:link, .nav-item > a:visited {
@@ -24,6 +45,25 @@
 
 .nav-item > a:active {
     color: #ffffff
+}
+
+.about-title {
+    font-size: 23pt;
+    font-weight: bold;
+}
+
+.about-title-name{
+    color: #066666
+}
+
+.about-title-description {
+    color: #339191
+}
+
+.about-text {
+    color: #959696;
+    font-size: 18pt;
+    line-height: normal;
 }
 
 #topHeader {
@@ -41,8 +81,9 @@
 
 #geolocations {
     color: black;
-    background-color: #339191;
+    /*background-color: #339191;*/
     font-size: 100%;
+    display: flex;
 }
 
 #languages {
@@ -67,16 +108,6 @@
     padding-left: 10px;
 }
 
-#menuButton1{
-
-}
-#menuButton2{
-
-}
-#menuButton3{
-
-}
-
 @media screen and (max-width: 575px) {
     #logo {
         text-align: center;
@@ -91,11 +122,25 @@
         display: flex;
         background-color: #c2c5c6;
         justify-content: center;
+        height: 60px;
+        padding-top: 0;
     }
 
     .navbar-nav > li {
         margin-left: 10px;
         margin-right: 10px;
+    }
+
+    .about {
+        padding-top: 50px;
+    }
+
+    .about-title {
+        font-size: 22pt;
+    }
+
+    .about-text {
+        font-size: 15pt;
     }
 
 }
@@ -109,12 +154,20 @@
         margin-left:5px;
         margin-right:5px;
     }
+
+    .about-text {
+        font-size: 15pt;
+    }
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
     .navbar-nav > li{
         margin-left:10px;
         margin-right:10px;
+    }
+
+    .about-text {
+        font-size: 17pt;
     }
 }
 
