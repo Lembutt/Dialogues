@@ -128,12 +128,6 @@ a.geo-button-clickable:hover {
     text-align: center;
 }
 
-.my-about-project-page-title {
-    text-align: center;
-    font-weight: bold;
-    font-size: 120%
-}
-
 .my-arrows {
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -147,7 +141,19 @@ a.geo-button-clickable:hover {
     padding-right: 0 !important;
 }
 
-.about-first-para {
+.page-title-text {
+    text-align: center;
+    font-weight: bold;
+    font-size: 120%
+}
+.my-about-project-page-title {
+    background-color: #afb3b4;
+}
+.my-schedule-page-title {
+    background-color: #4b989a;
+}
+
+.about-first-para-text {
     padding-top: 100px;
     font-size: 18pt;
     text-align: justify;
@@ -244,6 +250,7 @@ a.geo-button-clickable:hover {
 #imgPersGirlTwo {
     padding-left: 70px;
     padding-top: 100px;
+    transform: scale(0.8);
 }
 
 #imgPersGlasses {
@@ -288,12 +295,16 @@ a.geo-button-clickable:hover {
         font-size: 15pt;
     }
 
-    .about-first-para {
+    .about-first-para-text {
         padding-top: 0;
     }
 
     .about-second-para {
         padding-left: 0;
+    }
+
+    .about-second-para-text {
+        padding-top: 20pt;
     }
 }
 

@@ -29,7 +29,7 @@ translations = {
     },
     "lang-about-title-description": {
         "ru": "место для диалога и развития",
-        "en": "a place for dialogue and development"
+        "en": "a place for dialogue and progress"
     },
     "lang-about-text": {
         "ru": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!",
@@ -39,7 +39,7 @@ translations = {
         "ru": "о проекте",
         "en": "about project"
     },
-    "lang-about-first-para":{
+    "lang-about-first-para-text":{
         "ru": "На насыпной набережной мы предлагаем создать место для диалога &mdash; временную терассу, в которой будут презентоваться различные идеи и макеты по освоению этой части прибрежного пространства. Население, администрация, ученые, деятели культу смогут представить на всеобщее обозрение свои инновационные идеи.",
         "en": "On the embankment, we propose to create a place for dialogue &mdash; a temporary terrace, in which various ideas and layouts for the development of this part of the coastal space will be presented. Population, administration, scientists, cult figures will be able to present their innovative ideas to the public."
     },
@@ -50,6 +50,10 @@ translations = {
     "lang-about-second-para-text": {
         "ru": "Временная веранда, возникающая на месте вокруг которого ведется полемика с целью рассмаотреть все возможные варианты развития территории с различных точек зрения.",
         "en": "A temporary veranda that appears on the spot around which controversy is being conducted in order to consider all possible options for the development of the territory from different points of view. "
+    },
+    "lang-schedule-page-title": {
+        "ru": "события",
+        "en": "events"
     }
 }
 
@@ -169,18 +173,32 @@ class i18n {
 }
 
 class Arrows {
+
+    arrowPicture = {
+        "grey": "images/arrow-grey.svg",
+        "blue": "images/arrow-blue.svg"
+    }
+
+    arrowClasses = {
+        "my-arrows-grey": "grey",
+        "my-arrows-blue": "blue"
+    }
+
     draw() {
-        let element = document.getElementsByClassName('my-arrows')[0];
-        element.innerHTML = ''
-        let newDiv = document.createElement('div');
-        let newImg = document.createElement('img');
-        newImg.src = 'images/arrow.svg';
-        newImg.alt = 'arrow';
-        newDiv.appendChild(newImg);
-        for (const x of range(0, div(element.clientWidth, 14)-1)) {
-            let divToAppend = newDiv.cloneNode(true)
-            element.appendChild(divToAppend)
+        for (const cl of Object.keys(this.arrowClasses)) {
+            let element = document.getElementsByClassName(cl)[0];
+            element.innerHTML = ''
+            let newDiv = document.createElement('div');
+            let newImg = document.createElement('img');
+            newImg.src = this.arrowPicture[this.arrowClasses[cl]];
+            newImg.alt = 'arrow';
+            newDiv.appendChild(newImg);
+            for (const x of range(0, div(element.clientWidth, 14))) {
+                let divToAppend = newDiv.cloneNode(true)
+                element.appendChild(divToAppend)
+            }
         }
+
     }
 }
 
