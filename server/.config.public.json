@@ -1,0 +1,8 @@
+{
+  "mongo": {
+    "user": "admin",
+    "url": "",
+    "pwd": "",
+    "workingDB": "dialogues"
+  }
+}

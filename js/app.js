@@ -1,61 +1,16 @@
-translations = {
-    "lang-project": {
-        "ru": "проект",
-        "en": "project"
-    },
-    "lang-events": {
-        "ru": "события",
-        "en": "participate"
-    },
-    "lang-application": {
-        "ru": "заявка",
-        "en": "apply"
-    },
-    "lang-archive": {
-        "ru": "архив геолокаций",
-        "en": "geo archive"
-    },
-    "lang-apply-geo": {
-        "ru": "подайте заявку",
-        "en": "apply now"
-    },
-    "lang-alluvion": {
-        "ru": "намыв",
-        "en": "alluvion"
-    },
-    "lang-about-title-name": {
-        "ru": "Мобильная терасса &mdash;",
-        "en": "mobile terrace &mdash;"
-    },
-    "lang-about-title-description": {
-        "ru": "место для диалога и развития",
-        "en": "a place for dialogue and progress"
-    },
-    "lang-about-text": {
-        "ru": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!",
-        "en": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!"
-    },
-    "lang-about-project-page-title":{
-        "ru": "о проекте",
-        "en": "about project"
-    },
-    "lang-about-first-para-text":{
-        "ru": "На насыпной набережной мы предлагаем создать место для диалога &mdash; временную терассу, в которой будут презентоваться различные идеи и макеты по освоению этой части прибрежного пространства. Население, администрация, ученые, деятели культу смогут представить на всеобщее обозрение свои инновационные идеи.",
-        "en": "On the embankment, we propose to create a place for dialogue &mdash; a temporary terrace, in which various ideas and layouts for the development of this part of the coastal space will be presented. Population, administration, scientists, cult figures will be able to present their innovative ideas to the public."
-    },
-    "lang-about-second-para-title": {
-        "ru": "универсальный мобильный проект<br>",
-        "en": "versatile mobile project<br>"
-    },
-    "lang-about-second-para-text": {
-        "ru": "Временная веранда, возникающая на месте вокруг которого ведется полемика с целью рассмаотреть все возможные варианты развития территории с различных точек зрения.",
-        "en": "A temporary veranda that appears on the spot around which controversy is being conducted in order to consider all possible options for the development of the territory from different points of view. "
-    },
-    "lang-schedule-page-title": {
-        "ru": "события",
-        "en": "events"
+class Server {
+    host = '127.0.0.1';
+    port = 3000;
+
+    test () {
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", `http://${this.host}:${this.port}/test`, true ); // false for synchronous request
+        xmlHttp.send( null );
+        console.log('GOT', xmlHttp.status);
     }
 }
+const server = new Server()
+server.test()
 
 function div(val, by){
     return (val - val % by) / by;
@@ -140,6 +95,65 @@ class GeoButtons {
 
 class i18n {
     langsAvailable = ['ru', 'en']
+    translations = {
+        "lang-project": {
+            "ru": "проект",
+            "en": "project"
+        },
+        "lang-events": {
+            "ru": "события",
+            "en": "participate"
+        },
+        "lang-application": {
+            "ru": "заявка",
+            "en": "apply"
+        },
+        "lang-archive": {
+            "ru": "архив геолокаций",
+            "en": "geo archive"
+        },
+        "lang-apply-geo": {
+            "ru": "подайте заявку",
+            "en": "apply now"
+        },
+        "lang-alluvion": {
+            "ru": "намыв",
+            "en": "alluvion"
+        },
+        "lang-about-title-name": {
+            "ru": "Мобильная терасса &mdash;",
+            "en": "mobile terrace &mdash;"
+        },
+        "lang-about-title-description": {
+            "ru": "место для диалога и развития",
+            "en": "a place for dialogue and progress"
+        },
+        "lang-about-text": {
+            "ru": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!",
+            "en": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!"
+        },
+        "lang-about-project-page-title":{
+            "ru": "о проекте",
+            "en": "about project"
+        },
+        "lang-about-first-para-text":{
+            "ru": "На насыпной набережной мы предлагаем создать место для диалога &mdash; временную терассу, в которой будут презентоваться различные идеи и макеты по освоению этой части прибрежного пространства. Население, администрация, ученые, деятели культу смогут представить на всеобщее обозрение свои инновационные идеи.",
+            "en": "On the embankment, we propose to create a place for dialogue &mdash; a temporary terrace, in which various ideas and layouts for the development of this part of the coastal space will be presented. Population, administration, scientists, cult figures will be able to present their innovative ideas to the public."
+        },
+        "lang-about-second-para-title": {
+            "ru": "универсальный мобильный проект<br>",
+            "en": "versatile mobile project<br>"
+        },
+        "lang-about-second-para-text": {
+            "ru": "Временная веранда, возникающая на месте вокруг которого ведется полемика с целью рассмаотреть все возможные варианты развития территории с различных точек зрения.",
+            "en": "A temporary veranda that appears on the spot around which controversy is being conducted in order to consider all possible options for the development of the territory from different points of view. "
+        },
+        "lang-schedule-page-title": {
+            "ru": "события",
+            "en": "events"
+        }
+    }
+
 
     choose_translation () {
         let userLang = navigator.language;
@@ -162,11 +176,11 @@ class i18n {
         }
 
         // переводим
-        let elemNamesToTranslate = Object.keys(translations);
+        let elemNamesToTranslate = Object.keys(this.translations);
         for (const elemName of elemNamesToTranslate) {
             let elements = document.getElementsByClassName(elemName);
             for (const element of elements) {
-                element.innerHTML = translations[elemName][lang];
+                element.innerHTML = this.translations[elemName][lang];
             }
         }
     }

@@ -356,6 +356,12 @@ a.geo-button-clickable:hover {
     }
 }
 
+@media screen and (max-width: 1280px){
+    #imgPersSharf {
+        transform: scale(1);
+    }
+}
+
 @media screen and (min-width: 1600px){
     .navbar-nav > li{
         margin-left:85px;
