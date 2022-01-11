@@ -3,7 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose')
 const config = require('./.config.json').mongo
 
-const {i18n, geolocation, event} = require('./models')
+const { i18n, geolocation, project, event} = require('./models')
 
 const projRoot = path.join(__dirname, '..');
 
@@ -37,7 +37,55 @@ app.get("/", (req, res) => {
     res.sendFile('public/html/index.html', {root: projRoot});
 });
 
+//test
 app.get("/test", (req, res) => {
-    console.log('Got!')
+    console.log(req.query)
     res.sendStatus(353)
 });
+
+//getGeo
+app.get("/getGeo", async (req, res) => {
+    let geo = await geolocation.findOne({geoID: req.query.geoID}).exec()
+    res.send(geo)
+});
+
+app.get("/getProject", async (req, res) => {
+    let proj = await project.findOne({geoID: req.query.geoID, month: req.query.month}).exec()
+    console.log(proj)
+    res.send(proj)
+});
+
+function addGeolocationData() {
+    const geo = new geolocation({
+        geoID: 1,
+        title: {
+            ru: "Намыв",
+            en: "Alluvion"
+        }
+    });
+    geo.save(function(err){
+        mongoose.disconnect();  // отключение от базы данных
+
+        if(err) return console.log(err);
+        console.log("Сохранен объект", geo);
+    });
+}
+
+function addProjectData() {
+    const proj = new project({
+        geoID: 1,
+        title: {
+            ru: "Эколог",
+            en: "Ecologist"
+        },
+        month: 1
+    });
+    proj.save(function(err){
+        mongoose.disconnect();  // отключение от базы данных
+
+        if(err) return console.log(err);
+        console.log("Сохранен объект", proj);
+    });
+}
+
+// addProjectData()

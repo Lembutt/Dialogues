@@ -121,6 +121,7 @@ a.geo-button-clickable:hover {
     color: #959696;
     font-size: 18pt;
     line-height: normal;
+    text-align: justify;
 }
 
 .geo-name-xs {
@@ -172,6 +173,59 @@ a.geo-button-clickable:hover {
     font-size: 18pt;
     text-align: justify !important;
 }
+
+.events-hint {
+    text-align: right;
+    color: #afb3b4;
+    font-size: 20pt;
+}
+
+.events-time-text {
+    font-size: 20pt;
+    color: #afb3b4;
+    cursor: pointer;
+    justify-content: space-between;
+    transition-duration: 0.5s;
+}
+
+.month-scroll-active {
+    color: #4b989a;
+    font-weight: bold;
+}
+
+.month-scroll {
+    transition-duration: 0.5s;
+
+}
+
+.month-scroll:hover {
+    color: #4b989a;
+}
+
+.events-hint {
+    align-items: center;
+    justify-content: end;
+}
+
+.events-geo-name {
+    font-weight: bold;
+    font-size: 30pt;
+    align-items: center;
+    color: #4b989a;
+}
+
+.events-project-title {
+    font-weight: bold;
+    font-size: 20pt;
+    align-items: center;
+    color: #4b989a;
+}
+
+.events-project-description {
+    font-size: 20pt;
+    text-align: justify;
+}
+
 #topHeader {
     height: 45pt;
 }

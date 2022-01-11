@@ -1,16 +1,58 @@
 class Server {
     host = '127.0.0.1';
     port = 3000;
+    requestURI = `http://${this.host}:${this.port}`;
 
     test () {
         let xmlHttp = new XMLHttpRequest();
-        xmlHttp.open( "GET", `http://${this.host}:${this.port}/test`, true ); // false for synchronous request
-        xmlHttp.send( null );
-        console.log('GOT', xmlHttp.status);
+        xmlHttp.open( "GET", `${this.requestURI}/test`, true );
+        xmlHttp.send( "?a=123" );
+        setTimeout(() => {
+            if (xmlHttp.readyState === 4) {
+                console.log(xmlHttp.status);
+            }
+        }, 350);
+
+    }
+
+    getGeo (geoID) {
+        try {
+            let xmlHttp = new XMLHttpRequest();
+            xmlHttp.open( "GET", `${this.requestURI}/getGeo?geoID=${geoID}`, false );
+            xmlHttp.send( null );
+            return JSON.parse(xmlHttp.responseText);
+        } catch (err) {
+            console.log(err)
+            return {}
+        }
+
+    }
+
+    getProject (month, geoID) {
+        try {
+            let xmlHttp = new XMLHttpRequest();
+            xmlHttp.open( "GET", `${this.requestURI}/getProject?geoID=${geoID}&month=${month}`, false );
+            xmlHttp.send( null );
+            return JSON.parse(xmlHttp.responseText) ;
+        } catch (err) {
+            console.log(err)
+            return {}
+        }
+    }
+
+    getEvents (month, geoID) {
+        try {
+            let xmlHttp = new XMLHttpRequest();
+            xmlHttp.open( "GET", `${this.requestURI}/getEvents?geoID=${geoID}&month=${month}`, false );
+            xmlHttp.send( null );
+            return JSON.parse(xmlHttp.responseText) ;
+        } catch (err) {
+            console.log(err)
+            return {}
+        }
     }
 }
 const server = new Server()
-server.test()
 
 function div(val, by){
     return (val - val % by) / by;
@@ -93,8 +135,9 @@ class GeoButtons {
     }
 }
 
+
 class i18n {
-    langsAvailable = ['ru', 'en']
+    langsAvailable = ['ru', 'en'];
     translations = {
         "lang-project": {
             "ru": "проект",
@@ -151,9 +194,25 @@ class i18n {
         "lang-schedule-page-title": {
             "ru": "события",
             "en": "events"
+        },
+        "lang-events-geo-hint": {
+            "ru": "геолокация",
+            "en": "geolocation"
+        },
+        "lang-events-time-hint": {
+            "ru": "время",
+            "en": "time"
+        },
+        "events-project-hint": {
+            "ru": "проект",
+            "en": "project"
+        },
+        "events-events-hint": {
+            "ru": "события",
+            "en": "events"
         }
-    }
-
+    };
+    userLang;
 
     choose_translation () {
         let userLang = navigator.language;
@@ -163,7 +222,8 @@ class i18n {
         }
     }
 
-    translate(lang=this.userLang) {
+    translate(lang=this.userLang, changedByButton=false) {
+        this.userLang=lang;
         // меняем язык в интерфейсе
         for (const langAvailable of this.langsAvailable) {
             if (langAvailable === lang) {
@@ -183,8 +243,16 @@ class i18n {
                 element.innerHTML = this.translations[elemName][lang];
             }
         }
+
+        // если язык изменяется при помощи кнопок
+        if (changedByButton) {
+            monthScroll.create(this.userLang, monthScroll.currentActiveMonth)
+            projEvents.render(1, this.userLang)
+        }
     }
 }
+
+let trans = new i18n();
 
 class Arrows {
 
@@ -216,8 +284,145 @@ class Arrows {
     }
 }
 
-let trans = new i18n();
-let arrows = new Arrows()
+class MonthScroll {
+    months = [
+        {
+            "ru": null,
+            "en": null,
+            "num": 0
+        },
+        {
+            "ru": "Январь",
+            "en": "January",
+            "num": 1
+        },
+        {
+            "ru": "Февраль",
+            "en": "February",
+            "num": 2
+        },
+        {
+            "ru": "Март",
+            "en": "March",
+            "num": 3
+        },
+        {
+            "ru": "Апрель",
+            "en": "April",
+            "num": 4
+        },
+        {
+            "ru": "Май",
+            "en": "May",
+            "num": 5
+        },
+        {
+            "ru": "Июнь",
+            "en": "June",
+            "num": 6
+        },
+        {
+            "ru": "Июль",
+            "en": "July",
+            "num": 7
+        },
+        {
+            "ru": "Август",
+            "en": "August",
+            "num": 8
+        },
+        {
+            "ru": "Сентябрь",
+            "en": "September",
+            "num": 9
+        },
+        {
+            "ru": "Октябрь",
+            "en": "October",
+            "num": 10
+        },
+        {
+            "ru": "Ноябрь",
+            "en": "November",
+            "num": 11
+        },
+        {
+            "ru": "Декабрь",
+            "en": "December",
+            "num": 12
+        }
+    ];
+    currentActiveMonth = this.__getCurrentMonth();
+
+    __getCurrentMonth() {
+        let date = new Date();
+        return date.getMonth() + 1;
+    }
+
+    create(lang, initMonth=this.currentActiveMonth, changedByButton=false) {
+        this.currentActiveMonth = initMonth;
+        let scrollArray = [
+            this.months[(initMonth - 1)  >= 1 ? (initMonth - 1) : 12],
+            this.months[initMonth],
+            this.months[(initMonth + 1)  <= 12 ? (initMonth + 1) : (initMonth + 1) % 12],
+            this.months[(initMonth + 2)  <= 12 ? (initMonth + 2) : (initMonth + 2) % 12],
+        ];
+
+        let elements = document.getElementsByClassName('month-scroll');
+
+        for (const i of range(0, elements.length - 1)) {
+            elements[i].innerHTML = scrollArray[i][lang];
+            elements[i].setAttribute(
+                'onclick',
+                `monthScroll.create(trans.userLang, ${scrollArray[i].num}, true)`
+            );
+        }
+
+        if (changedByButton) {
+            projEvents.render()
+        }
+    }
+}
+
+let monthScroll = new MonthScroll();
+
+
+class ProjectEventsList {
+
+    renderGeolocationTitle (geoID = 1, lang=trans.userLang) {
+        const geo = server.getGeo(1);
+        let element = document.getElementsByClassName('events-geo-name')[0];
+        element.innerHTML = 'title' in geo ? geo.title[lang] : '';
+    };
+
+    renderProjectDescription (geoID = 1, month = monthScroll.currentActiveMonth, lang=trans.userLang) {
+        const proj = server.getProject(month, geoID);
+        let elementTitle = document.getElementsByClassName('events-project-title')[0];
+        let elementDescription = document.getElementsByClassName('events-project-description')[0];
+        elementTitle.innerHTML = 'title' in proj ? proj.title[lang] : '';
+        elementDescription.innerHTML = 'description' in proj ? proj.description[lang] : '';
+
+    }
+
+    renderProjectEvents (geoID = 1, month = monthScroll.currentActiveMonth, lang=trans.userLang) {
+        const events = server.getEvents(month, geoID);
+        let mainElement = document.getElementsByClassName('events-events-text')[0]
+        for (const event of events) {
+            let eventTitleElement = document.createElement('div')
+            eventTitleElement.classList.add('col-12')
+
+        }
+    }
+
+    render (geoID=1, lang=trans.userLang, month=monthScroll.currentActiveMonth) {
+        this.renderGeolocationTitle(geoID, lang)
+        this.renderProjectDescription(geoID, month, lang)
+    }
+}
+
+
+let arrows = new Arrows();
+let projEvents = new ProjectEventsList()
 
 //events
 
