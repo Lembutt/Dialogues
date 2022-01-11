@@ -5,6 +5,9 @@ const config = require('./.config.json').mongo
 
 const {i18n, geolocation, event} = require('./models')
 
+const projRoot = path.join(__dirname, '..');
+
+const mongoURI = `mongodb+srv://${config.user}:${config.pwd}@${config.url}/${config.workingDB}`
 
 const app = express();
 
@@ -15,11 +18,7 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
-
-
-const projRoot = path.join(__dirname, '..');
-
-const mongoURI = `mongodb+srv://${config.user}:${config.pwd}@${config.url}/${config.workingDB}`
+app.use('/', express.static(path.join(projRoot, 'public')));
 
 async function start() {
     try {
@@ -35,22 +34,7 @@ async function start() {
 start()
 
 app.get("/", (req, res) => {
-    res.sendFile('index.html', {root: projRoot});
-});
-
-//styles
-app.get("/css/styles.css", (req, res) => {
-    res.sendFile('css/styles.css', {root: projRoot});
-});
-
-//js
-app.get("/js/app.js", (req, res) => {
-    res.sendFile(req.path, {root: projRoot});
-});
-
-//images
-app.get("/images/*", (req, res) => {
-    res.sendFile(req.path, {root: projRoot});
+    res.sendFile('public/html/index.html', {root: projRoot});
 });
 
 app.get("/test", (req, res) => {
