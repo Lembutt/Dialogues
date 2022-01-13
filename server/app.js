@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const config = require('./.config.json').mongo
 
 const { i18n, geolocation, project, event} = require('./models')
+const {json} = require("express");
 
 const projRoot = path.join(__dirname, '..');
 
@@ -51,9 +52,18 @@ app.get("/getGeo", async (req, res) => {
 
 app.get("/getProject", async (req, res) => {
     let proj = await project.findOne({geoID: req.query.geoID, month: req.query.month}).exec()
-    console.log(proj)
     res.send(proj)
 });
+
+app.get("/getEvents", async (req, res) => {
+    let events = await event.find({geoID: req.query.geoID, month: req.query.month}).sort('date').exec()
+    res.send(
+        JSON.parse(
+            JSON.stringify(events)
+        )
+    );
+});
+
 
 function addGeolocationData() {
     const geo = new geolocation({
@@ -88,4 +98,42 @@ function addProjectData() {
     });
 }
 
+function addEventsData() {
+    const eventOne = new event({
+        geoID: 1,
+        date: new Date('2022-01-10'),
+        month: 1,
+        time: '14:00',
+        title: {
+            ru: 'доклад эколога',
+            en: 'ecologist report'
+        },
+        speaker: {
+            ru: 'Абрамова Вероника',
+            en: 'Abramova Veronika'
+        }
+    });
+    eventOne.save(function(err){
+        mongoose.disconnect();  // отключение от базы данных
+        if(err) return console.log(err);
+        console.log("Сохранен объект", eventOne);
+    });
+    const eventTwo = new event({
+        geoID: 1,
+        date: new Date('2022-01-14'),
+        month: 1,
+        time: '19:00',
+        title: {
+            ru: 'встреча на берегу',
+            en: 'meeting on the shore'
+        }
+    });
+    eventTwo.save(function(err){
+        mongoose.disconnect();  // отключение от базы данных
+        if(err) return console.log(err);
+        console.log("Сохранен объект", eventOne);
+    });
+};
+
 // addProjectData()
+// addEventsData()

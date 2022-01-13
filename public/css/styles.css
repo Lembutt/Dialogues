@@ -226,6 +226,33 @@ a.geo-button-clickable:hover {
     text-align: justify;
 }
 
+.events-event-title {
+    font-size: 20pt;
+}
+
+.events-event-title-date {
+    font-weight: bold;
+    color: #4b989a;
+}
+
+.events-event-title-title {
+    font-weight: bold;
+}
+
+.events-event-description {
+    font-size: 16pt;
+}
+
+.events-event-description-time {
+    font-weight: bold;
+    color: #afb3b4;
+    text-align: right;
+}
+
+.events-event-empty-row {
+    height: 30px;
+}
+
 #topHeader {
     height: 45pt;
 }
@@ -365,6 +392,10 @@ a.geo-button-clickable:hover {
 @media screen and (max-width: 650px) {
     .geo-button {
         font-size: 0.8em;
+    }
+
+    .events-event-description-time {
+        padding-left: 12px;
     }
 }
 

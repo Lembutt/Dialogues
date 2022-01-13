@@ -109,6 +109,17 @@ function range(start, end, step) {
 
 }
 
+Date.prototype.ddmmyy = function () {
+    let mm = this.getMonth() + 1; // getMonth() is zero-based
+    let dd = this.getDate();
+    let yyyy = this.getFullYear().toString();
+
+    return [
+        (dd>9 ? '' : '0') + dd,
+        (mm>9 ? '' : '0') + mm,
+        yyyy[2] + yyyy[3]
+    ].join('.');
+}
 
 class GeoButtons {
     // цвета для кнопок в верхнем меню
@@ -203,13 +214,17 @@ class i18n {
             "ru": "время",
             "en": "time"
         },
-        "events-project-hint": {
+        "lang-events-project-hint": {
             "ru": "проект",
             "en": "project"
         },
-        "events-events-hint": {
-            "ru": "события",
+        "lang-events-events-hint": {
+            "ru": "мероприятия",
             "en": "events"
+        },
+        "lang-events-create-event-hint": {
+            "ru": "предложить мероприятие",
+            "en": "propose an event"
         }
     };
     userLang;
@@ -405,18 +420,89 @@ class ProjectEventsList {
     }
 
     renderProjectEvents (geoID = 1, month = monthScroll.currentActiveMonth, lang=trans.userLang) {
+        const delimiter = '| '
         const events = server.getEvents(month, geoID);
-        let mainElement = document.getElementsByClassName('events-events-text')[0]
+        // главный элемент
+        let mainElement = document.getElementsByClassName('events-events-text')[0];
+        mainElement.innerHTML = ''
         for (const event of events) {
-            let eventTitleElement = document.createElement('div')
-            eventTitleElement.classList.add('col-12')
+            // есть ли у события спикер
+            const eventHasSpeaker = !(event.speaker[lang] === ' ');
 
+            // для каждого события свой элемент
+            let eventElement = document.createElement('div');
+
+
+            // элемент для шапки события
+            let eventTitleElement = document.createElement('div');
+            eventTitleElement.classList.add('events-event-title');
+            eventTitleElement.classList.add('col-12');
+
+
+            // добавляем дату события
+            let spanTitleDate = document.createElement('span');
+            spanTitleDate.classList.add('events-event-title-date');
+            spanTitleDate.innerHTML = new Date(event.date).ddmmyy() + delimiter;
+            eventTitleElement.appendChild(spanTitleDate);
+
+            // добавляем название события
+            let spanTitleTitle = document.createElement('span');
+            spanTitleTitle.classList.add('text-uppercase');
+            spanTitleTitle.classList.add('events-event-title-title');
+            spanTitleTitle.innerHTML = event.title[lang] + (eventHasSpeaker ? delimiter : '');
+            eventTitleElement.appendChild(spanTitleTitle);
+
+            // добавляем спикеров события если есть
+            if (eventHasSpeaker) {
+                let spanTitleSpeaker = document.createElement('span');
+                spanTitleSpeaker.classList.add('events-event-title-speaker')
+                spanTitleSpeaker.innerHTML = event.speaker[lang];
+                eventTitleElement.appendChild(spanTitleSpeaker);
+            }
+
+
+            // элемент для описания событияa
+            let eventDescription = document.createElement('div')
+            eventDescription.classList.add('col-12')
+            eventDescription.classList.add('row')
+            eventDescription.classList.add('events-event-description')
+
+
+
+            //время начала мероприятия
+            let eventDescriptionTime = document.createElement('div')
+            eventDescriptionTime.classList.add('col-2')
+            eventDescriptionTime.classList.add('col-md-1')
+            eventDescriptionTime.classList.add('events-event-description-time')
+            eventDescriptionTime.classList.add('my-del-padding')
+            eventDescriptionTime.innerHTML = event.time
+            eventDescription.appendChild(eventDescriptionTime)
+
+            //описание события
+            let eventDescriptionText = document.createElement('div')
+            eventDescriptionText.classList.add('col-10')
+            eventDescriptionText.innerHTML = event.description[lang]
+            eventDescription.appendChild(eventDescriptionText)
+
+
+            let emptyRow = document.createElement('div')
+            emptyRow.classList.add('col-12')
+            emptyRow.classList.add('events-event-empty-row')
+
+
+
+            eventElement.appendChild(eventTitleElement)
+            eventElement.appendChild(eventDescription)
+            eventElement.appendChild(emptyRow)
+            mainElement.appendChild(eventElement)
+            // eventTitleElement.appendChild(document.createElement(span))
         }
     }
 
     render (geoID=1, lang=trans.userLang, month=monthScroll.currentActiveMonth) {
-        this.renderGeolocationTitle(geoID, lang)
-        this.renderProjectDescription(geoID, month, lang)
+        this.renderGeolocationTitle(geoID, lang);
+        this.renderProjectDescription(geoID, month, lang);
+        this.renderProjectEvents(geoID, month, lang)
     }
 }
 

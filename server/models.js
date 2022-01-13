@@ -3,11 +3,13 @@ const {Schema, model} = require('mongoose')
 const i18n = new Schema({
     ru: {
         type: String,
-        required: true
+        required: true,
+        default: ''
     },
     en: {
         type: String,
-        required: true
+        required: true,
+        default: ''
     }
 })
 
@@ -57,7 +59,9 @@ const project = new Schema({
     },
     month: {
         type: Number,
-        required: true
+        required: true,
+        min: 1,
+        max: 12
     }
 })
 
@@ -70,11 +74,16 @@ const event = new Schema({
         type: Date,
         required: true
     },
+    month: {
+        type: Number,
+        min: 1,
+        max: 12
+    },
     time: {
         type: String,
         required: true
     },
-    name: {
+    title: {
         type: i18n,
         required: true
     },
@@ -82,8 +91,8 @@ const event = new Schema({
         type: i18n,
         required: false,
         default: {
-            ru: '',
-            en: ''
+            ru: ' ',
+            en: ' '
         }
     },
     description: {
