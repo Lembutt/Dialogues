@@ -513,7 +513,6 @@ class ProjectEventsList {
             eventDescription.classList.add('events-event-description')
 
 
-
             //время начала мероприятия
             let eventDescriptionTime = document.createElement('div')
             eventDescriptionTime.classList.add('col-2')
@@ -583,7 +582,7 @@ let appl = new Applications();
 function onload () {
     trans.translate();
     monthScroll.create(trans.userLang);
-    projEvents.render();
+    /*projEvents.render();*/
     arrows.draw();
 }
 //js events

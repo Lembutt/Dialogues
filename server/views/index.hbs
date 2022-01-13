@@ -1,0 +1,217 @@
+<!--
+<!doctype html>
+<html lang="ru">
+<head>
+    &lt;!&ndash; TODO: Шрифт Myriad Pro (regular, bold) основной текст 18 pt, шапка+ месяца (янв-дек) 20 pt, самый большой (временная терраса, намыв) 44 pt&ndash;&gt;
+    &lt;!&ndash; TODO: Rename first page to main, second page is "about"&ndash;&gt;
+    &lt;!&ndash; Обязательные метатеги &ndash;&gt;
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/modal.css">
+
+    &lt;!&ndash; Bootstrap CSS &ndash;&gt;
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title class="lang-title">Диалоги</title>
+    <link rel="icon" type="image/svg" sizes="64x64" href="images/icon.svg">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19mdozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/app.js"></script>
+
+</head>
+<body onload="onload();">
+<div class="container-fluid pt-sans-font my-page">
+    <div class="row text-uppercase my-header-background" id="topHeader">
+        <div class="d-none d-sm-none d-md-none d-lg-block col-lg-1"></div>
+        <div class="col-sm-2 col-md-2 col-lg-1 my-align-header-items-middle lang-archive" id="archive">архив геолокаций</div>
+        <div class="col-sm-8 col-md-8 col-lg-8 my-align-header-items-middle my-geo-buttons" id="geolocations">
+            <div class="geo-button-active text-uppercase" id="darkGreen"><a href="#about" class="geo-button-clickable lang-alluvion">Намыв</a></div>
+            <div class="geo-button" id="purple"><a class="geo-button-clickable lang-apply-geo" href="#application">подайте заявку</a></div>
+            <div class="geo-button" id="pink"><a class="geo-button-clickable lang-apply-geo" href="#application">подайте заявку</a></div>
+            <div class="geo-button" id="yellow"><a class="geo-button-clickable lang-apply-geo" href="#application">подайте заявку</a></div>
+            <div class="geo-button" id="green"><a class="geo-button-clickable lang-apply-geo" href="#application">подайте заявку</a></div>
+            <div class="geo-button" id="skyBlue"><a class="geo-button-clickable lang-apply-geo" href="#application">подайте заявку</a></div>
+            <div class="geo-button" id="blue"><a class="geo-button-clickable lang-apply-geo" href="#application">подайте заявку</a></div>
+            <div class="geo-button" id="peach"><a class="geo-button-clickable lang-apply-geo" href="#application">подайте заявку</a></div>
+        </div>
+        <script>
+            buttons = new GeoButtons()
+        </script>
+        <div class="col-sm-2 col-md-2 col-lg-1 my-align-header-items-middle" id="languages">
+            <div class="row">
+                <div class="col-6 my-lang-button" id="ruButton" onclick="trans.translate('ru', true)">RU</div>
+                <div class="col-6 my-lang-button" id="enButton" onclick="trans.translate('en', true)">EN</div>
+                <script>
+                    trans.choose_translation();
+                </script>
+            </div>
+        </div>
+        <div class="d-none d-sm-none d-md-none d-lg-block col-lg-1" ></div>
+    </div>
+    <div class="row align-items-center row-cols-xs-1 row-cols-sm-2 my-header-background" id="bottomHeader">
+        <div class="d-none d-lg-block col-lg-1"></div>
+        <div class="col-md-6 col-lg-5" id="logo"><img src="../images/logo.svg" alt="logo"></div>
+        <div class="d-sm-none col geo-name-xs my-header-background text-uppercase lang-alluvion">Намыв</div>
+        <div class="col-md-6 col-lg-5 text-uppercase my-menu-buttons">
+            <nav class="navbar navbar-expand"  style="background-color: #c2c5c6;">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item" id="menuButton1">
+                                <a class="nav-link lang-project" aria-current="page" href="#about">Проект</a>
+                            </li>
+                            <li class="nav-item" id="menuButton2">
+                                <a class="nav-link lang-events" href="#events">События</a>
+                            </li>
+                            <li class="nav-item" id="menuButton3">
+                                <a class="nav-link lang-application" href="#application">Заявка</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="d-none d-sm-block col-lg-1"></div>
+    </div>
+    <div class="row">
+        <div class="d-none d-sm-none d-md-block col-4 my-main-wave">
+            <img src="../images/main_wave.svg" alt="mainWave">
+        </div>
+    </div>
+    <div class="row about" id="mainPage">
+        <div class="d-none d-sm-none d-md-block col-md-3"></div>
+        <div class="col-12 col-md-8 col-xxl-7">
+            <p class="text-uppercase about-title">
+                <span class="about-title-name lang-about-title-name">Мобильная терасса &mdash; </span>
+                <span class="about-title-description lang-about-title-description">место для диалога и развития</span>
+            </p>
+            <p class="about-text">
+                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!</span><span>Ab ad, autem eaque enim facilis id, ipsam obcaecati odio perspiciatis placeat porro provident quaerat quibusdam, soluta ullam. Assumenda error et ipsum iure natus non numquam optio provident sint veritatis.</span>
+            </p>
+        </div>
+        <div class="d-none d-sm-none d-md-block col-md-1 col-xxl-2"></div>
+    </div>
+</div>
+<div class="container-fluid pt-sans-font my-page">
+    <div class="row" id="about">
+        <div class="col-md-3 page-title-text my-about-project-page-title lang-about-project-page-title text-uppercase"></div>
+        <div class="d-none d-md-flex col-md-9 my-arrows my-arrows-grey"></div>
+    </div>
+    <div class="row" id="myEventsRow">
+        <div class="d-none d-sm-block col-sm-3 my-wave">
+            <img src="../images/wave-grey.svg" alt="">
+        </div>
+        <div class="col-sm-8 col-md-4">
+            <p class="d-block d-sm-none about-second-para-title lang-about-second-para-title text-uppercase"></p>
+            <p class="about-first-para-text lang-about-first-para-text"></p>
+        </div>
+        <div class="d-none d-md-block col-md-1"><img src="../images/pers-6.svg" alt="galstuk" id="imgPersGalstuk"></div>
+        <div class="d-none d-md-block col-md-4 my-del-padding" id="imgKettleDiv"><img src="../images/kettle.svg" alt="kettle" id="imgKettle"></div>
+    </div>
+    <div class="row">
+        <div class="d-none d-md-block col-md-2 my-del-padding"><img src="../images/pers-1.svg" alt="" id="imgPersKudr"></div>
+        <div class="d-none d-md-block col-md-2 my-del-padding"><img src="../images/pers-2.svg" alt="" id="imgPersSharf"></div>
+        <div class="d-none d-lg-block col-lg-1 my-del-padding"><img src="../images/pers3-4.svg" alt="" id="imgPersGirlOne"></div>
+        <div class="d-none d-lg-block col-lg-1 my-del-padding"><img src="../images/pers3-4.svg" alt="" id="imgPersGirlTwo"></div>
+        <div class="d-md-block d-lg-none col-md-2 my-del-padding"></div>
+        <div class="col-sm-8 col-md-5 col-xxl-4 about-second-para">
+            <div class="about-second-para">
+                <p class="d-none d-sm-block about-second-para-title lang-about-second-para-title text-uppercase"></p>
+                <p class="about-second-para-text lang-about-second-para-text"></p>
+            </div>
+        </div>
+        <div class="d-none d-md-block col-md-1 col-xxl-2"><img src="../images/pers-5.svg" alt="" id="imgPersGlasses"></div>
+    </div>
+</div>
+&lt;!&ndash;<div class="container-fluid pt-sans-font my-page">
+    <div class="row" id="events">
+        <div class="col-md-3 my-schedule-page-title page-title-text lang-schedule-page-title text-uppercase"></div>
+        <div class="d-none d-md-flex col-md-9 my-arrows my-arrows-blue"></div>
+    </div>
+    <div class="row" id="myAboutFirstRow">
+        <div class="d-none d-sm-block col-sm-3 my-wave">
+            <img src="../images/wave-blue.svg" alt="">
+        </div>
+    </div>
+    <div class="row">
+        <div class="d-none d-md-block col-md-3 events-hint events-geo-hint lang-events-geo-hint text-uppercase"></div>
+        <div class="d-flex col-12 col-md-9 events-geo-name lang-events-geo-text text-uppercase"></div>
+    </div>
+    <div class="row">
+        <div class="d-none d-md-block col-md-3 events-hint events-time-hint lang-events-time-hint text-uppercase"></div>
+        <div class="col-12 col-md-5 events-time-text text-uppercase d-flex">
+            <span class="month-scroll"></span>
+            <span>|</span>
+            <span class="month-scroll month-scroll-active"></span>
+            <span>|</span>
+            <span class="month-scroll"></span>
+            <span>|</span>
+            <span class="month-scroll"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="d-none d-md-block col-md-3 events-hint events-project-hint lang-events-project-hint text-uppercase"></div>
+        <div class="col-12 col-md-8 events-project lang-events-project-text">
+            <p class="d-flex events-project-title"></p><p class="events-project-description"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="d-none d-md-block col-md-3 events-hint events-events-hint lang-events-events-hint text-uppercase"></div>
+        <div class="col-12 col-md-9 events-events-text"></div>
+    </div>
+    <div class="row">
+        <div class="d-none d-md-block col-md-3 events-hint events-create-event-hint lang-events-create-event-hint text-uppercase"></div>
+        <div class="col-12 col-md-9 events-create-event-button lang-events-create-event-button"></div>
+    </div>
+</div>&ndash;&gt;
+
+
+<div class="modal-propose-event">
+    <div class="container-fluid">
+        <form class="row g-3">
+            <div class="form-floating col-md-6">
+                <input type="text" class="form-control" id="inputEventsName" placeholder="placeholder">
+                <label for="inputEventsName" class="form-label lang-name"></label>
+            </div>
+            <div class="col-md-6 form-floating">
+                <input type="text" class="form-control" id="inputEventsProfession" placeholder="placeholder">
+                <label for="inputEventsProfession" class="form-label lang-profession"></label>
+            </div>
+            <div class="col-md-6 form-floating">
+                <input type="text" class="form-control" id="inputEventsCountry" placeholder="placeholder">
+                <label for="inputEventsCountry" class="form-label lang-country"></label>
+            </div>
+            <div class="col-md-6 form-floating">
+                <input type="text" class="form-control" id="inputEventsCity" placeholder="placeholder">
+                <label for="inputEventsCity" class="form-label lang-city"></label>
+            </div>
+            <div class="col-12 form-floating">
+                <input type="text" class="form-control" id="inputEventsTheme" placeholder="placeholder">
+                <label for="inputEventsTheme" class="form-label  lang-theme"></label>
+            </div>
+            <div class="col-12">
+                <label for="inputEventsThemeDescription" class="form-label lang-theme-description">Описание события</label>
+                <textarea class="form-control" id="inputEventsThemeDescription" rows="3"></textarea>
+            </div>
+            <div class="col-md-4 form-floating">
+                <input type="text" class="form-control" id="inputEventsPhone" placeholder="placeholder">
+                <label for="inputEventsPhone" class="form-label lang-phone"></label>
+            </div>
+            <div class="col-md-4 form-floating">
+                <input type="text" class="form-control" id="inputEventsEmail" placeholder="placeholder">
+                <label for="inputEventsEmail" class="form-label">E-mail</label>
+            </div>
+            <div class="col-md-4 form-floating">
+                <input type="text" class="form-control" id="inputEventsOtherContacts" placeholder="placeholder">
+                <label for="inputEventsOtherContacts" class="form-label lang-other-contacts">Other contacts</label>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary lang-apply" onclick="appl.makeEventApplication()">Sign in</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>
+-->

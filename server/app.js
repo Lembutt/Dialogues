@@ -1,16 +1,25 @@
 const express = require('express');
-const path = require('path');
 const mongoose = require('mongoose')
+const exphbs = require('express-handlebars')
+const path = require('path');
 const config = require('./.config.json').mongo
 
-const { i18n, geolocation, project, event, eventApplication} = require('./models')
+const { i18n, geolocation, project, event, eventApplication} = require('./src/models')
 const {json} = require("express");
 
-const projRoot = path.join(__dirname, '..');
+const projRoot = __dirname;
 
 const mongoURI = `mongodb+srv://${config.user}:${config.pwd}@${config.url}/${config.workingDB}`
 
 const app = express();
+const hbs = exphbs.create({
+    defaultLayout: 'main',
+    extname: 'hbs'
+});
+
+app.engine('hbs', hbs.engine);
+app.set('view engine', 'hbs');
+app.set('views');
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -35,7 +44,8 @@ async function start() {
 start()
 
 app.get("/", (req, res) => {
-    res.sendFile('public/html/index.html', {root: projRoot});
+    res.render('index')
+    // res.sendFile('public/html/index.html', {root: projRoot});
 });
 
 //test
