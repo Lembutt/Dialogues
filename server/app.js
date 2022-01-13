@@ -3,13 +3,15 @@ const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const path = require('path');
 const config = require('./.config.json').mongo
+const i18n = require('./src/translations')
+let User = require('./src/user')
 
-const { i18n, geolocation, project, event, eventApplication} = require('./src/models')
+const { geolocation, project, event, eventApplication} = require('./src/models')
 const {json} = require("express");
 
 const projRoot = __dirname;
 
-const mongoURI = `mongodb+srv://${config.user}:${config.pwd}@${config.url}/${config.workingDB}`
+const mongoURI = `mongodb+srv://${config.user}:${config.pwd}@${config.url}/${config.workingDB}`;
 
 const app = express();
 const hbs = exphbs.create({
@@ -17,9 +19,14 @@ const hbs = exphbs.create({
     extname: 'hbs'
 });
 
+
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views');
+
+let user = new User;
+
+translations = new i18n
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -29,6 +36,7 @@ app.use(function (req, res, next) {
     next();
 });
 app.use('/', express.static(path.join(projRoot, 'public')));
+
 
 async function start() {
     try {
@@ -44,8 +52,24 @@ async function start() {
 start()
 
 app.get("/", (req, res) => {
-    res.render('index')
-    // res.sendFile('public/html/index.html', {root: projRoot});
+    user.setLang(req.headers["accept-language"]);
+    res.redirect('/' + (user.lang));
+});
+
+app.get("/en", (req, res) => {
+    let lang = req.path[1]+req.path[2]
+    res.render('index', {
+        trans: translations.translate(lang),
+        ru: false
+    })
+});
+
+app.get("/ru", (req, res) => {
+    let lang = req.path[1]+req.path[2]
+    res.render('index', {
+        trans: translations.translate(lang),
+        ru: true
+    })
 });
 
 //test

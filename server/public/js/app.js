@@ -1,63 +1,63 @@
-class Server {
-    host = '127.0.0.1';
-    port = 3000;
-    requestURI = `http://${this.host}:${this.port}`;
-
-    getGeo (geoID) {
-        try {
-            let xmlHttp = new XMLHttpRequest();
-            xmlHttp.open( "GET", `${this.requestURI}/getGeo?geoID=${geoID}`, false );
-            xmlHttp.send( null );
-            return JSON.parse(xmlHttp.responseText);
-        } catch (err) {
-            console.log(err)
-            return {}
-        }
-    };
-
-    getProject (month, geoID) {
-        try {
-            let xmlHttp = new XMLHttpRequest();
-            xmlHttp.open( "GET", `${this.requestURI}/getProject?geoID=${geoID}&month=${month}`, false );
-            xmlHttp.send( null );
-            return JSON.parse(xmlHttp.responseText) ;
-        } catch (err) {
-            console.log(err)
-            return {}
-        }
-    };
-
-    getEvents (month, geoID) {
-        try {
-            let xmlHttp = new XMLHttpRequest();
-            xmlHttp.open( "GET", `${this.requestURI}/getEvents?geoID=${geoID}&month=${month}`, false );
-            xmlHttp.send( null );
-            return JSON.parse(xmlHttp.responseText) ;
-        } catch (err) {
-            console.log(err)
-            return {}
-        }
-    };
-
-    postEventApplication (data) {
-        try {
-            let xmlHttp = new XMLHttpRequest();
-            xmlHttp.open( "POST", `${this.requestURI}/postEventApplication?`, false );
-            xmlHttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            xmlHttp.send(
-                JSON.parse(
-                    JSON.stringify(
-                        data
-                    )
-            ));
-            return JSON.parse(xmlHttp.responseText) ;
-        } catch (err) {
-            console.log(err)
-            return {}
-        }
-    };
-}
-const server = new Server()
+// class Server {
+//     host = '194.32.248.49';
+//     port = 3000;
+//     requestURI = `https://${this.host}`;
+//
+//     getGeo (geoID) {
+//         try {
+//             let xmlHttp = new XMLHttpRequest();
+//             xmlHttp.open( "GET", `${this.requestURI}/getGeo?geoID=${geoID}`, false );
+//             xmlHttp.send( null );
+//             return JSON.parse(xmlHttp.responseText);
+//         } catch (err) {
+//             console.log(err)
+//             return {}
+//         }
+//     };
+//
+//     getProject (month, geoID) {
+//         try {
+//             let xmlHttp = new XMLHttpRequest();
+//             xmlHttp.open( "GET", `${this.requestURI}/getProject?geoID=${geoID}&month=${month}`, false );
+//             xmlHttp.send( null );
+//             return JSON.parse(xmlHttp.responseText) ;
+//         } catch (err) {
+//             console.log(err)
+//             return {}
+//         }
+//     };
+//
+//     getEvents (month, geoID) {
+//         try {
+//             let xmlHttp = new XMLHttpRequest();
+//             xmlHttp.open( "GET", `${this.requestURI}/getEvents?geoID=${geoID}&month=${month}`, false );
+//             xmlHttp.send( null );
+//             return JSON.parse(xmlHttp.responseText) ;
+//         } catch (err) {
+//             console.log(err)
+//             return {}
+//         }
+//     };
+//
+//     postEventApplication (data) {
+//         try {
+//             let xmlHttp = new XMLHttpRequest();
+//             xmlHttp.open( "POST", `${this.requestURI}/postEventApplication?`, false );
+//             xmlHttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+//             xmlHttp.send(
+//                 JSON.parse(
+//                     JSON.stringify(
+//                         data
+//                     )
+//             ));
+//             return JSON.parse(xmlHttp.responseText) ;
+//         } catch (err) {
+//             console.log(err)
+//             return {}
+//         }
+//     };
+// }
+// const server = new Server()
 
 function div(val, by){
     return (val - val % by) / by;
@@ -127,6 +127,13 @@ Date.prototype.ddmmyy = function () {
     ].join('.');
 }
 
+function RemoveLastDirectoryPartOf(the_url)
+{
+    let the_arr = the_url.split('/');
+    the_arr.pop();
+    return( the_arr.join('/') );
+}
+
 class GeoButtons {
     // цвета для кнопок в верхнем меню
     buttonsColors = {
@@ -152,167 +159,170 @@ class GeoButtons {
     }
 }
 
-
-class i18n {
-    langsAvailable = ['ru', 'en'];
-    translations = {
-        "lang-project": {
-            ru: "проект",
-            en: "project"
-        },
-        "lang-events": {
-            ru: "события",
-            en: "participate"
-        },
-        "lang-application": {
-            ru: "заявка",
-            en: "apply"
-        },
-        "lang-archive": {
-            ru: "архив геолокаций",
-            en: "geo archive"
-        },
-        "lang-apply-geo": {
-            ru: "подайте заявку",
-            en: "apply now"
-        },
-        "lang-alluvion": {
-            ru: "намыв",
-            en: "alluvion"
-        },
-        "lang-about-title-name": {
-            ru: "Мобильная терасса &mdash;",
-            en: "mobile terrace &mdash;"
-        },
-        "lang-about-title-description": {
-            ru: "место для диалога и развития",
-            en: "a place for dialogue and progress"
-        },
-        "lang-about-text": {
-            ru: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!",
-            en: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!"
-        },
-        "lang-about-project-page-title":{
-            ru: "о проекте",
-            en: "about project"
-        },
-        "lang-about-first-para-text":{
-            ru: "На насыпной набережной мы предлагаем создать место для диалога &mdash; временную терассу, в которой будут презентоваться различные идеи и макеты по освоению этой части прибрежного пространства. Население, администрация, ученые, деятели культу смогут представить на всеобщее обозрение свои инновационные идеи.",
-            en: "On the embankment, we propose to create a place for dialogue &mdash; a temporary terrace, in which various ideas and layouts for the development of this part of the coastal space will be presented. Population, administration, scientists, cult figures will be able to present their innovative ideas to the public."
-        },
-        "lang-about-second-para-title": {
-            ru: "универсальный мобильный проект<br>",
-            en: "versatile mobile project<br>"
-        },
-        "lang-about-second-para-text": {
-            ru: "Временная веранда, возникающая на месте вокруг которого ведется полемика с целью рассмаотреть все возможные варианты развития территории с различных точек зрения.",
-            en: "A temporary veranda that appears on the spot around which controversy is being conducted in order to consider all possible options for the development of the territory from different points of view. "
-        },
-        "lang-schedule-page-title": {
-            ru: "события",
-            en: "events"
-        },
-        "lang-events-geo-hint": {
-            ru: "геолокация",
-            en: "geolocation"
-        },
-        "lang-events-time-hint": {
-            ru: "время",
-            en: "time"
-        },
-        "lang-events-project-hint": {
-            ru: "проект",
-            en: "project"
-        },
-        "lang-events-events-hint": {
-            ru: "мероприятия",
-            en: "events"
-        },
-        "lang-events-create-event-hint": {
-            ru: "предложить мероприятие",
-            en: "propose an event"
-        },
-        "lang-profession": {
-            ru: "Профессия",
-            en: "Profession"
-        },
-        "lang-name": {
-            ru: "Ваше имя",
-            en: "Your name"
-        },
-        "lang-theme": {
-            ru: "Тема события",
-            en: "Event theme"
-        },
-        "lang-theme-description": {
-            ru: "Описание события",
-            en: "Event description"
-        },
-        "lang-city": {
-            ru: "Город",
-            en: "City"
-        },
-        "lang-country": {
-            ru: "Страна",
-            en: "Country"
-        },
-        "lang-phone": {
-            ru: "Телефон",
-            en: "Phone"
-        },
-        "lang-other-contacts": {
-            ru: "Другие контакты",
-            en: "Other contacts"
-        },
-        "lang-apply": {
-            ru: "Подать заявку",
-            en: "Apply"
-        },
-        "lang-title": {
-            ru: "Диалоги",
-            en: "Dialogues"
-        }
-    };
-    userLang;
-
-    choose_translation () {
-        let userLang = navigator.language;
-        this.userLang = userLang.split('-')[0];
-        if (!(userLang in ['ru', 'en'])) {
-            this.userLang = 'en';
-        }
-    }
-
-    translate(lang=this.userLang, changedByButton=false) {
-        this.userLang=lang;
-        // меняем язык в интерфейсе
-        for (const langAvailable of this.langsAvailable) {
-            if (langAvailable === lang) {
-                let element = document.getElementById(lang + 'Button');
-                element.classList.add("my-lang-button-active");
-            } else {
-                let element = document.getElementById(langAvailable + 'Button');
-                element.classList.remove("my-lang-button-active");
-            }
-        }
-
-        // переводим
-        let elemNamesToTranslate = Object.keys(this.translations);
-        for (const elemName of elemNamesToTranslate) {
-            let elements = document.getElementsByClassName(elemName);
-            for (const element of elements) {
-                element.innerHTML = this.translations[elemName][lang];
-            }
-        }
-
-        // если язык изменяется при помощи кнопок
-        if (changedByButton) {
-            monthScroll.create(this.userLang, monthScroll.currentActiveMonth)
-            projEvents.render(1, this.userLang)
-        }
-    }
-}
-let trans = new i18n();
+function translate(lang) {
+    let newLocation = RemoveLastDirectoryPartOf(window.location + '') + '/' + lang;
+    window.location.replace(newLocation)
+};
+// class i18n {
+//     langsAvailable = ['ru', 'en'];
+//     translations = {
+//         "lang-project": {
+//             ru: "проект",
+//             en: "project"
+//         },
+//         "lang-events": {
+//             ru: "события",
+//             en: "participate"
+//         },
+//         "lang-application": {
+//             ru: "заявка",
+//             en: "apply"
+//         },
+//         "lang-archive": {
+//             ru: "архив геолокаций",
+//             en: "geo archive"
+//         },
+//         "lang-apply-geo": {
+//             ru: "подайте заявку",
+//             en: "apply now"
+//         },
+//         "lang-alluvion": {
+//             ru: "намыв",
+//             en: "alluvion"
+//         },
+//         "lang-about-title-name": {
+//             ru: "Мобильная терасса &mdash;",
+//             en: "mobile terrace &mdash;"
+//         },
+//         "lang-about-title-description": {
+//             ru: "место для диалога и развития",
+//             en: "a place for dialogue and progress"
+//         },
+//         "lang-about-text": {
+//             ru: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!",
+//             en: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!"
+//         },
+//         "lang-about-project-page-title":{
+//             ru: "о проекте",
+//             en: "about project"
+//         },
+//         "lang-about-first-para-text":{
+//             ru: "На насыпной набережной мы предлагаем создать место для диалога &mdash; временную терассу, в которой будут презентоваться различные идеи и макеты по освоению этой части прибрежного пространства. Население, администрация, ученые, деятели культу смогут представить на всеобщее обозрение свои инновационные идеи.",
+//             en: "On the embankment, we propose to create a place for dialogue &mdash; a temporary terrace, in which various ideas and layouts for the development of this part of the coastal space will be presented. Population, administration, scientists, cult figures will be able to present their innovative ideas to the public."
+//         },
+//         "lang-about-second-para-title": {
+//             ru: "универсальный мобильный проект<br>",
+//             en: "versatile mobile project<br>"
+//         },
+//         "lang-about-second-para-text": {
+//             ru: "Временная веранда, возникающая на месте вокруг которого ведется полемика с целью рассмаотреть все возможные варианты развития территории с различных точек зрения.",
+//             en: "A temporary veranda that appears on the spot around which controversy is being conducted in order to consider all possible options for the development of the territory from different points of view. "
+//         },
+//         "lang-schedule-page-title": {
+//             ru: "события",
+//             en: "events"
+//         },
+//         "lang-events-geo-hint": {
+//             ru: "геолокация",
+//             en: "geolocation"
+//         },
+//         "lang-events-time-hint": {
+//             ru: "время",
+//             en: "time"
+//         },
+//         "lang-events-project-hint": {
+//             ru: "проект",
+//             en: "project"
+//         },
+//         "lang-events-events-hint": {
+//             ru: "мероприятия",
+//             en: "events"
+//         },
+//         "lang-events-create-event-hint": {
+//             ru: "предложить мероприятие",
+//             en: "propose an event"
+//         },
+//         "lang-profession": {
+//             ru: "Профессия",
+//             en: "Profession"
+//         },
+//         "lang-name": {
+//             ru: "Ваше имя",
+//             en: "Your name"
+//         },
+//         "lang-theme": {
+//             ru: "Тема события",
+//             en: "Event theme"
+//         },
+//         "lang-theme-description": {
+//             ru: "Описание события",
+//             en: "Event description"
+//         },
+//         "lang-city": {
+//             ru: "Город",
+//             en: "City"
+//         },
+//         "lang-country": {
+//             ru: "Страна",
+//             en: "Country"
+//         },
+//         "lang-phone": {
+//             ru: "Телефон",
+//             en: "Phone"
+//         },
+//         "lang-other-contacts": {
+//             ru: "Другие контакты",
+//             en: "Other contacts"
+//         },
+//         "lang-apply": {
+//             ru: "Подать заявку",
+//             en: "Apply"
+//         },
+//         "lang-title": {
+//             ru: "Диалоги",
+//             en: "Dialogues"
+//         }
+//     };
+//     userLang;
+//
+//     choose_translation () {
+//         let userLang = navigator.language;
+//         this.userLang = userLang.split('-')[0];
+//         if (!(userLang in ['ru', 'en'])) {
+//             this.userLang = 'en';
+//         }
+//     }
+//
+//     translate(lang=this.userLang, changedByButton=false) {
+//         this.userLang=lang;
+//         // меняем язык в интерфейсе
+//         for (const langAvailable of this.langsAvailable) {
+//             if (langAvailable === lang) {
+//                 let element = document.getElementById(lang + 'Button');
+//                 element.classList.add("my-lang-button-active");
+//             } else {
+//                 let element = document.getElementById(langAvailable + 'Button');
+//                 element.classList.remove("my-lang-button-active");
+//             }
+//         }
+//
+//         // переводим
+//         let elemNamesToTranslate = Object.keys(this.translations);
+//         for (const elemName of elemNamesToTranslate) {
+//             let elements = document.getElementsByClassName(elemName);
+//             for (const element of elements) {
+//                 element.innerHTML = this.translations[elemName][lang];
+//             }
+//         }
+//
+//         // если язык изменяется при помощи кнопок
+//         if (changedByButton) {
+//             monthScroll.create(this.userLang, monthScroll.currentActiveMonth)
+//             projEvents.render(1, this.userLang)
+//         }
+//     }
+// }
+// let trans = new i18n();
 
 class Arrows {
 
@@ -447,142 +457,142 @@ class MonthScroll {
 let monthScroll = new MonthScroll();
 
 
-class ProjectEventsList {
+// class ProjectEventsList {
+//
+//     renderGeolocationTitle (geoID = 1, lang=trans.userLang) {
+//         const geo = server.getGeo(1);
+//         let element = document.getElementsByClassName('events-geo-name')[0];
+//         element.innerHTML = 'title' in geo ? geo.title[lang] : '';
+//     };
+//
+//     renderProjectDescription (geoID = 1, month = monthScroll.currentActiveMonth, lang=trans.userLang) {
+//         const proj = server.getProject(month, geoID);
+//         let elementTitle = document.getElementsByClassName('events-project-title')[0];
+//         let elementDescription = document.getElementsByClassName('events-project-description')[0];
+//         elementTitle.innerHTML = 'title' in proj ? proj.title[lang] : '';
+//         elementDescription.innerHTML = 'description' in proj ? proj.description[lang] : '';
+//
+//     }
+//
+//     renderProjectEvents (geoID = 1, month = monthScroll.currentActiveMonth, lang=trans.userLang) {
+//         const delimiter = '| '
+//         const events = server.getEvents(month, geoID);
+//         // главный элемент
+//         let mainElement = document.getElementsByClassName('events-events-text')[0];
+//         mainElement.innerHTML = ''
+//         for (const event of events) {
+//             // есть ли у события спикер
+//             const eventHasSpeaker = !(event.speaker[lang] === ' ');
+//
+//             // для каждого события свой элемент
+//             let eventElement = document.createElement('div');
+//
+//
+//             // элемент для шапки события
+//             let eventTitleElement = document.createElement('div');
+//             eventTitleElement.classList.add('events-event-title');
+//             eventTitleElement.classList.add('col-12');
+//
+//
+//             // добавляем дату события
+//             let spanTitleDate = document.createElement('span');
+//             spanTitleDate.classList.add('events-event-title-date');
+//             spanTitleDate.innerHTML = new Date(event.date).ddmmyy() + delimiter;
+//             eventTitleElement.appendChild(spanTitleDate);
+//
+//             // добавляем название события
+//             let spanTitleTitle = document.createElement('span');
+//             spanTitleTitle.classList.add('text-uppercase');
+//             spanTitleTitle.classList.add('events-event-title-title');
+//             spanTitleTitle.innerHTML = event.title[lang] + (eventHasSpeaker ? delimiter : '');
+//             eventTitleElement.appendChild(spanTitleTitle);
+//
+//             // добавляем спикеров события если есть
+//             if (eventHasSpeaker) {
+//                 let spanTitleSpeaker = document.createElement('span');
+//                 spanTitleSpeaker.classList.add('events-event-title-speaker')
+//                 spanTitleSpeaker.innerHTML = event.speaker[lang];
+//                 eventTitleElement.appendChild(spanTitleSpeaker);
+//             }
+//
+//
+//             // элемент для описания событияa
+//             let eventDescription = document.createElement('div')
+//             eventDescription.classList.add('col-12')
+//             eventDescription.classList.add('row')
+//             eventDescription.classList.add('events-event-description')
+//
+//
+//             //время начала мероприятия
+//             let eventDescriptionTime = document.createElement('div')
+//             eventDescriptionTime.classList.add('col-2')
+//             eventDescriptionTime.classList.add('col-md-1')
+//             eventDescriptionTime.classList.add('events-event-description-time')
+//             eventDescriptionTime.classList.add('my-del-padding')
+//             eventDescriptionTime.innerHTML = event.time
+//             eventDescription.appendChild(eventDescriptionTime)
+//
+//             //описание события
+//             let eventDescriptionText = document.createElement('div')
+//             eventDescriptionText.classList.add('col-10')
+//             eventDescriptionText.innerHTML = event.description[lang]
+//             eventDescription.appendChild(eventDescriptionText)
+//
+//
+//             let emptyRow = document.createElement('div')
+//             emptyRow.classList.add('col-12')
+//             emptyRow.classList.add('events-event-empty-row')
+//
+//
+//
+//             eventElement.appendChild(eventTitleElement)
+//             eventElement.appendChild(eventDescription)
+//             eventElement.appendChild(emptyRow)
+//             mainElement.appendChild(eventElement)
+//             // eventTitleElement.appendChild(document.createElement(span))
+//         }
+//     }
+//
+//     render (geoID=1, lang=trans.userLang, month=monthScroll.currentActiveMonth) {
+//         this.renderGeolocationTitle(geoID, lang);
+//         this.renderProjectDescription(geoID, month, lang);
+//         this.renderProjectEvents(geoID, month, lang)
+//     }
+// }
 
-    renderGeolocationTitle (geoID = 1, lang=trans.userLang) {
-        const geo = server.getGeo(1);
-        let element = document.getElementsByClassName('events-geo-name')[0];
-        element.innerHTML = 'title' in geo ? geo.title[lang] : '';
-    };
 
-    renderProjectDescription (geoID = 1, month = monthScroll.currentActiveMonth, lang=trans.userLang) {
-        const proj = server.getProject(month, geoID);
-        let elementTitle = document.getElementsByClassName('events-project-title')[0];
-        let elementDescription = document.getElementsByClassName('events-project-description')[0];
-        elementTitle.innerHTML = 'title' in proj ? proj.title[lang] : '';
-        elementDescription.innerHTML = 'description' in proj ? proj.description[lang] : '';
-
-    }
-
-    renderProjectEvents (geoID = 1, month = monthScroll.currentActiveMonth, lang=trans.userLang) {
-        const delimiter = '| '
-        const events = server.getEvents(month, geoID);
-        // главный элемент
-        let mainElement = document.getElementsByClassName('events-events-text')[0];
-        mainElement.innerHTML = ''
-        for (const event of events) {
-            // есть ли у события спикер
-            const eventHasSpeaker = !(event.speaker[lang] === ' ');
-
-            // для каждого события свой элемент
-            let eventElement = document.createElement('div');
-
-
-            // элемент для шапки события
-            let eventTitleElement = document.createElement('div');
-            eventTitleElement.classList.add('events-event-title');
-            eventTitleElement.classList.add('col-12');
-
-
-            // добавляем дату события
-            let spanTitleDate = document.createElement('span');
-            spanTitleDate.classList.add('events-event-title-date');
-            spanTitleDate.innerHTML = new Date(event.date).ddmmyy() + delimiter;
-            eventTitleElement.appendChild(spanTitleDate);
-
-            // добавляем название события
-            let spanTitleTitle = document.createElement('span');
-            spanTitleTitle.classList.add('text-uppercase');
-            spanTitleTitle.classList.add('events-event-title-title');
-            spanTitleTitle.innerHTML = event.title[lang] + (eventHasSpeaker ? delimiter : '');
-            eventTitleElement.appendChild(spanTitleTitle);
-
-            // добавляем спикеров события если есть
-            if (eventHasSpeaker) {
-                let spanTitleSpeaker = document.createElement('span');
-                spanTitleSpeaker.classList.add('events-event-title-speaker')
-                spanTitleSpeaker.innerHTML = event.speaker[lang];
-                eventTitleElement.appendChild(spanTitleSpeaker);
-            }
-
-
-            // элемент для описания событияa
-            let eventDescription = document.createElement('div')
-            eventDescription.classList.add('col-12')
-            eventDescription.classList.add('row')
-            eventDescription.classList.add('events-event-description')
-
-
-            //время начала мероприятия
-            let eventDescriptionTime = document.createElement('div')
-            eventDescriptionTime.classList.add('col-2')
-            eventDescriptionTime.classList.add('col-md-1')
-            eventDescriptionTime.classList.add('events-event-description-time')
-            eventDescriptionTime.classList.add('my-del-padding')
-            eventDescriptionTime.innerHTML = event.time
-            eventDescription.appendChild(eventDescriptionTime)
-
-            //описание события
-            let eventDescriptionText = document.createElement('div')
-            eventDescriptionText.classList.add('col-10')
-            eventDescriptionText.innerHTML = event.description[lang]
-            eventDescription.appendChild(eventDescriptionText)
-
-
-            let emptyRow = document.createElement('div')
-            emptyRow.classList.add('col-12')
-            emptyRow.classList.add('events-event-empty-row')
-
-
-
-            eventElement.appendChild(eventTitleElement)
-            eventElement.appendChild(eventDescription)
-            eventElement.appendChild(emptyRow)
-            mainElement.appendChild(eventElement)
-            // eventTitleElement.appendChild(document.createElement(span))
-        }
-    }
-
-    render (geoID=1, lang=trans.userLang, month=monthScroll.currentActiveMonth) {
-        this.renderGeolocationTitle(geoID, lang);
-        this.renderProjectDescription(geoID, month, lang);
-        this.renderProjectEvents(geoID, month, lang)
-    }
-}
-
-
-class Applications {
-    eventApplicationFormIDs = {
-        name: "inputEventsName",
-        profession: "inputEventsProfession",
-        country: "inputEventsCountry",
-        city: "inputEventsCity",
-        theme: "inputEventsTheme",
-        themeDescription: "inputEventsThemeDescription",
-        phone: "inputEventsPhone",
-        email: "inputEventsEmail",
-        otherContacts: "inputEventsOtherContacts"
-    };
-
-    makeEventApplication () {
-        let applicationData = {};
-        for (const form of Object.keys(this.eventApplicationFormIDs)) {
-            let element = document.getElementById(this.eventApplicationFormIDs[form]);
-            applicationData[form] = element.value;
-            element.value = '';
-        }
-        server.postEventApplication(applicationData);
-    }
-}
+// class Applications {
+//     eventApplicationFormIDs = {
+//         name: "inputEventsName",
+//         profession: "inputEventsProfession",
+//         country: "inputEventsCountry",
+//         city: "inputEventsCity",
+//         theme: "inputEventsTheme",
+//         themeDescription: "inputEventsThemeDescription",
+//         phone: "inputEventsPhone",
+//         email: "inputEventsEmail",
+//         otherContacts: "inputEventsOtherContacts"
+//     };
+//
+//     makeEventApplication () {
+//         let applicationData = {};
+//         for (const form of Object.keys(this.eventApplicationFormIDs)) {
+//             let element = document.getElementById(this.eventApplicationFormIDs[form]);
+//             applicationData[form] = element.value;
+//             element.value = '';
+//         }
+//         server.postEventApplication(applicationData);
+//     }
+// }
 
 let arrows = new Arrows();
-let projEvents = new ProjectEventsList();
-let appl = new Applications();
+// let projEvents = new ProjectEventsList();
+// let appl = new Applications();
 
 function onload () {
-    trans.translate();
-    monthScroll.create(trans.userLang);
-    /*projEvents.render();*/
+    // trans.translate();
+    // monthScroll.create(trans.userLang);
+    // projEvents.render();
     arrows.draw();
 }
 //js events
