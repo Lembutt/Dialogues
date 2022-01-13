@@ -1,4 +1,5 @@
-const {Schema, model} = require('mongoose')
+const {Schema, model} = require('mongoose');
+
 
 const i18n = new Schema({
     ru: {
@@ -11,7 +12,8 @@ const i18n = new Schema({
         required: true,
         default: ''
     }
-})
+});
+
 
 const geolocation = new Schema({
     geoID: {
@@ -34,7 +36,8 @@ const geolocation = new Schema({
                 "saepe voluptas! Esse, recusandae."
         }
     }
-})
+});
+
 
 const project = new Schema({
     geoID: {
@@ -63,7 +66,8 @@ const project = new Schema({
         min: 1,
         max: 12
     }
-})
+});
+
 
 const event = new Schema({
     geoID: {
@@ -107,11 +111,30 @@ const event = new Schema({
                 "saepe voluptas! Esse, recusandae."
         }
     }
+});
+
+
+const eventApplication = new Schema({
+    name: String,
+    profession: String,
+    country: String,
+    city: String,
+    theme: String,
+    themeDescription: String,
+    phone: String,
+    email: String,
+    otherContacts: String,
+    geoID: {
+        type: Number,
+        default: 1
+    }
 })
+
 
 module.exports = {
     i18n: model('i18n', i18n),
     geolocation: model('geolocation', geolocation),
     project: model('project', project),
-    event: model('event', event)
+    event: model('event', event),
+    eventApplication: model('eventApplication', eventApplication)
 };

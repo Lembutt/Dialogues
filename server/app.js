@@ -3,7 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose')
 const config = require('./.config.json').mongo
 
-const { i18n, geolocation, project, event} = require('./models')
+const { i18n, geolocation, project, event, eventApplication} = require('./models')
 const {json} = require("express");
 
 const projRoot = path.join(__dirname, '..');
@@ -62,6 +62,39 @@ app.get("/getEvents", async (req, res) => {
             JSON.stringify(events)
         )
     );
+});
+
+app.post("/postEventApplication", async (req, res) => {
+    console.log(req.body)
+    /*try{
+        const qData = req.query
+        const evAppl = new eventApplication({
+            name: qData.name,
+            profession: qData.profession,
+            country: qData.country,
+            city: qData.city,
+            theme: qData.theme,
+            themeDescription: qData.themeDescription,
+            phone: qData.phone,
+            email: qData.email,
+            otherContacts: qData.otherContacts,
+            geoID: qData.geoID
+        });
+        evAppl.save(function (err) {
+            mongoose.disconnect();  // отключение от базы данных
+            if (err) return console.log(err);
+            console.log("Сохранен объект", evAppl);
+        });
+        res.status(200)
+        res.send(
+            JSON.parse(
+                JSON.stringify(evAppl)
+            )
+        );
+    } catch (err) {
+      res.status(-200)
+      res.send({error: err})
+    }*/
 });
 
 

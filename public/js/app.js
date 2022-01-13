@@ -13,7 +13,7 @@ class Server {
             }
         }, 350);
 
-    }
+    };
 
     getGeo (geoID) {
         try {
@@ -25,8 +25,7 @@ class Server {
             console.log(err)
             return {}
         }
-
-    }
+    };
 
     getProject (month, geoID) {
         try {
@@ -38,7 +37,7 @@ class Server {
             console.log(err)
             return {}
         }
-    }
+    };
 
     getEvents (month, geoID) {
         try {
@@ -50,7 +49,25 @@ class Server {
             console.log(err)
             return {}
         }
-    }
+    };
+
+    postEventApplication (data) {
+        try {
+            let xmlHttp = new XMLHttpRequest();
+            xmlHttp.open( "POST", `${this.requestURI}/postEventApplication?`, false );
+            xmlHttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xmlHttp.send(
+                JSON.parse(
+                    JSON.stringify(
+                        data
+                    )
+            ));
+            return JSON.parse(xmlHttp.responseText) ;
+        } catch (err) {
+            console.log(err)
+            return {}
+        }
+    };
 }
 const server = new Server()
 
@@ -109,6 +126,7 @@ function range(start, end, step) {
 
 }
 
+// ddmmyy format of date
 Date.prototype.ddmmyy = function () {
     let mm = this.getMonth() + 1; // getMonth() is zero-based
     let dd = this.getDate();
@@ -151,80 +169,116 @@ class i18n {
     langsAvailable = ['ru', 'en'];
     translations = {
         "lang-project": {
-            "ru": "проект",
-            "en": "project"
+            ru: "проект",
+            en: "project"
         },
         "lang-events": {
-            "ru": "события",
-            "en": "participate"
+            ru: "события",
+            en: "participate"
         },
         "lang-application": {
-            "ru": "заявка",
-            "en": "apply"
+            ru: "заявка",
+            en: "apply"
         },
         "lang-archive": {
-            "ru": "архив геолокаций",
-            "en": "geo archive"
+            ru: "архив геолокаций",
+            en: "geo archive"
         },
         "lang-apply-geo": {
-            "ru": "подайте заявку",
-            "en": "apply now"
+            ru: "подайте заявку",
+            en: "apply now"
         },
         "lang-alluvion": {
-            "ru": "намыв",
-            "en": "alluvion"
+            ru: "намыв",
+            en: "alluvion"
         },
         "lang-about-title-name": {
-            "ru": "Мобильная терасса &mdash;",
-            "en": "mobile terrace &mdash;"
+            ru: "Мобильная терасса &mdash;",
+            en: "mobile terrace &mdash;"
         },
         "lang-about-title-description": {
-            "ru": "место для диалога и развития",
-            "en": "a place for dialogue and progress"
+            ru: "место для диалога и развития",
+            en: "a place for dialogue and progress"
         },
         "lang-about-text": {
-            "ru": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!",
-            "en": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!"
+            ru: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!",
+            en: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!"
         },
         "lang-about-project-page-title":{
-            "ru": "о проекте",
-            "en": "about project"
+            ru: "о проекте",
+            en: "about project"
         },
         "lang-about-first-para-text":{
-            "ru": "На насыпной набережной мы предлагаем создать место для диалога &mdash; временную терассу, в которой будут презентоваться различные идеи и макеты по освоению этой части прибрежного пространства. Население, администрация, ученые, деятели культу смогут представить на всеобщее обозрение свои инновационные идеи.",
-            "en": "On the embankment, we propose to create a place for dialogue &mdash; a temporary terrace, in which various ideas and layouts for the development of this part of the coastal space will be presented. Population, administration, scientists, cult figures will be able to present their innovative ideas to the public."
+            ru: "На насыпной набережной мы предлагаем создать место для диалога &mdash; временную терассу, в которой будут презентоваться различные идеи и макеты по освоению этой части прибрежного пространства. Население, администрация, ученые, деятели культу смогут представить на всеобщее обозрение свои инновационные идеи.",
+            en: "On the embankment, we propose to create a place for dialogue &mdash; a temporary terrace, in which various ideas and layouts for the development of this part of the coastal space will be presented. Population, administration, scientists, cult figures will be able to present their innovative ideas to the public."
         },
         "lang-about-second-para-title": {
-            "ru": "универсальный мобильный проект<br>",
-            "en": "versatile mobile project<br>"
+            ru: "универсальный мобильный проект<br>",
+            en: "versatile mobile project<br>"
         },
         "lang-about-second-para-text": {
-            "ru": "Временная веранда, возникающая на месте вокруг которого ведется полемика с целью рассмаотреть все возможные варианты развития территории с различных точек зрения.",
-            "en": "A temporary veranda that appears on the spot around which controversy is being conducted in order to consider all possible options for the development of the territory from different points of view. "
+            ru: "Временная веранда, возникающая на месте вокруг которого ведется полемика с целью рассмаотреть все возможные варианты развития территории с различных точек зрения.",
+            en: "A temporary veranda that appears on the spot around which controversy is being conducted in order to consider all possible options for the development of the territory from different points of view. "
         },
         "lang-schedule-page-title": {
-            "ru": "события",
-            "en": "events"
+            ru: "события",
+            en: "events"
         },
         "lang-events-geo-hint": {
-            "ru": "геолокация",
-            "en": "geolocation"
+            ru: "геолокация",
+            en: "geolocation"
         },
         "lang-events-time-hint": {
-            "ru": "время",
-            "en": "time"
+            ru: "время",
+            en: "time"
         },
         "lang-events-project-hint": {
-            "ru": "проект",
-            "en": "project"
+            ru: "проект",
+            en: "project"
         },
         "lang-events-events-hint": {
-            "ru": "мероприятия",
-            "en": "events"
+            ru: "мероприятия",
+            en: "events"
         },
         "lang-events-create-event-hint": {
-            "ru": "предложить мероприятие",
-            "en": "propose an event"
+            ru: "предложить мероприятие",
+            en: "propose an event"
+        },
+        "lang-profession": {
+            ru: "Профессия",
+            en: "Profession"
+        },
+        "lang-name": {
+            ru: "Ваше имя",
+            en: "Your name"
+        },
+        "lang-theme": {
+            ru: "Тема события",
+            en: "Event theme"
+        },
+        "lang-theme-description": {
+            ru: "Описание события",
+            en: "Event description"
+        },
+        "lang-city": {
+            ru: "Город",
+            en: "City"
+        },
+        "lang-country": {
+            ru: "Страна",
+            en: "Country"
+        },
+        "lang-phone": {
+            ru: "Телефон",
+            en: "Phone"
+        },
+        "lang-other-contacts": {
+            ru: "Другие контакты",
+            en: "Other contacts"
+        },
+        "lang-apply": {
+            ru: "Подать заявку",
+            en: "Apply"
         }
     };
     userLang;
@@ -266,7 +320,6 @@ class i18n {
         }
     }
 }
-
 let trans = new i18n();
 
 class Arrows {
@@ -299,72 +352,73 @@ class Arrows {
     }
 }
 
+
 class MonthScroll {
     months = [
         {
-            "ru": null,
-            "en": null,
-            "num": 0
+            ru: null,
+            en: null,
+            num: 0
         },
         {
-            "ru": "Январь",
-            "en": "January",
-            "num": 1
+            ru: "Январь",
+            en: "January",
+            num: 1
         },
         {
-            "ru": "Февраль",
-            "en": "February",
-            "num": 2
+            ru: "Февраль",
+            en: "February",
+            num: 2
         },
         {
-            "ru": "Март",
-            "en": "March",
-            "num": 3
+            ru: "Март",
+            en: "March",
+            num: 3
         },
         {
-            "ru": "Апрель",
-            "en": "April",
-            "num": 4
+            ru: "Апрель",
+            en: "April",
+            num: 4
         },
         {
-            "ru": "Май",
-            "en": "May",
-            "num": 5
+            ru: "Май",
+            en: "May",
+            num: 5
         },
         {
-            "ru": "Июнь",
-            "en": "June",
-            "num": 6
+            ru: "Июнь",
+            en: "June",
+            num: 6
         },
         {
-            "ru": "Июль",
-            "en": "July",
-            "num": 7
+            ru: "Июль",
+            en: "July",
+            num: 7
         },
         {
-            "ru": "Август",
-            "en": "August",
-            "num": 8
+            ru: "Август",
+            en: "August",
+            num: 8
         },
         {
-            "ru": "Сентябрь",
-            "en": "September",
-            "num": 9
+            ru: "Сентябрь",
+            en: "September",
+            num: 9
         },
         {
-            "ru": "Октябрь",
-            "en": "October",
-            "num": 10
+            ru: "Октябрь",
+            en: "October",
+            num: 10
         },
         {
-            "ru": "Ноябрь",
-            "en": "November",
-            "num": 11
+            ru: "Ноябрь",
+            en: "November",
+            num: 11
         },
         {
-            "ru": "Декабрь",
-            "en": "December",
-            "num": 12
+            ru: "Декабрь",
+            en: "December",
+            num: 12
         }
     ];
     currentActiveMonth = this.__getCurrentMonth();
@@ -398,7 +452,6 @@ class MonthScroll {
         }
     }
 }
-
 let monthScroll = new MonthScroll();
 
 
@@ -507,11 +560,40 @@ class ProjectEventsList {
 }
 
 
+class Applications {
+    eventApplicationFormIDs = {
+        name: "inputEventsName",
+        profession: "inputEventsProfession",
+        country: "inputEventsCountry",
+        city: "inputEventsCity",
+        theme: "inputEventsTheme",
+        themeDescription: "inputEventsThemeDescription",
+        phone: "inputEventsPhone",
+        email: "inputEventsEmail",
+        otherContacts: "inputEventsOtherContacts"
+    };
+
+    makeEventApplication () {
+        let applicationData = {};
+        for (const form of Object.keys(this.eventApplicationFormIDs)) {
+            let element = document.getElementById(this.eventApplicationFormIDs[form]);
+            applicationData[form] = element.value;
+            element.value = '';
+        }
+        server.postEventApplication(applicationData);
+    }
+}
+
 let arrows = new Arrows();
-let projEvents = new ProjectEventsList()
+let projEvents = new ProjectEventsList();
+let appl = new Applications();
 
-//events
+function onload () {
+    trans.translate();
+    monthScroll.create(trans.userLang);
+    projEvents.render();
+    arrows.draw();
+}
+//js events
 
-window.addEventListener('resize', function(event) {
-    arrows.draw()
-}, true);
+window.addEventListener('resize', arrows.draw, true);
