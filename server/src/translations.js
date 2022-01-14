@@ -12,6 +12,10 @@ class i18n {
             ru: "заявка",
             en: "apply"
         },
+        problemReport: {
+            ru: "Расскажите о проблеме",
+            en: "Report problem"
+        },
         archive: {
             ru: "архив геолокаций",
             en: "geo archive"
@@ -25,8 +29,8 @@ class i18n {
             en: "alluvion"
         },
         aboutTitleName: {
-            ru: "Мобильная терасса &mdash;",
-            en: "mobile terrace &mdash;"
+            ru: "Мобильная терасса -",
+            en: "mobile terrace -"
         },
         aboutTitleDescription: {
             ru: "место для диалога и развития",
@@ -41,8 +45,8 @@ class i18n {
             en: "about project"
         },
         aboutFirstParaText:{
-            ru: "На насыпной набережной мы предлагаем создать место для диалога &mdash; временную терассу, в которой будут презентоваться различные идеи и макеты по освоению этой части прибрежного пространства. Население, администрация, ученые, деятели культу смогут представить на всеобщее обозрение свои инновационные идеи.",
-            en: "On the embankment, we propose to create a place for dialogue &mdash; a temporary terrace, in which various ideas and layouts for the development of this part of the coastal space will be presented. Population, administration, scientists, cult figures will be able to present their innovative ideas to the public."
+            ru: "На насыпной набережной мы предлагаем создать место для диалога - временную терассу, в которой будут презентоваться различные идеи и макеты по освоению этой части прибрежного пространства. Население, администрация, ученые, деятели культу смогут представить на всеобщее обозрение свои инновационные идеи.",
+            en: "On the embankment, we propose to create a place for dialogue - a temporary terrace, in which various ideas and layouts for the development of this part of the coastal space will be presented. Population, administration, scientists, cult figures will be able to present their innovative ideas to the public."
         },
         aboutSecondParaTitle: {
             ru: "универсальный мобильный проект",
@@ -75,6 +79,10 @@ class i18n {
         eventsCreateEventHint: {
             ru: "предложить мероприятие",
             en: "propose an event"
+        },
+        eventsCreateProjectHint: {
+            ru: "предложить проект",
+            en: "propose a project"
         },
         profession: {
             ru: "Профессия",
@@ -123,6 +131,18 @@ class i18n {
         proposeEventTitle: {
             ru: "Предложите мероприятие!",
             en: "Propose an event!"
+        },
+        proposeProjectTitle: {
+            ru: "Предложите проект!",
+            en: "Propose a project!"
+        },
+        projectTheme: {
+            ru: "Тема проекта",
+            en: "Project theme"
+        },
+        projectThemeDescription: {
+            ru: "Описание темы проекта",
+            en: "Project theme description"
         }
     };
 

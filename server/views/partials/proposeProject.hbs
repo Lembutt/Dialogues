@@ -1,0 +1,57 @@
+<div class="modal fade" id="proposeProject" tabindex="-1" aria-labelledby="proposeProjectLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="proposeProjectLabel">{{trans.proposeProjectTitle}}</h5>
+                <button type="close" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="row g-3">
+                        <div class="form-floating col-md-6">
+                            <input type="text" class="form-control" id="inputProjectsName" placeholder="placeholder">
+                            <label for="inputProjectsName" class="form-label">{{trans.name}}</label>
+                        </div>
+                        <div class="col-md-6 form-floating">
+                            <input type="text" class="form-control" id="inputProjectsProfession" placeholder="placeholder">
+                            <label for="inputProjectsProfession" class="form-label">{{trans.profession}}</label>
+                        </div>
+                        <div class="col-md-6 form-floating">
+                            <input type="text" class="form-control" id="inputProjectsCountry" placeholder="placeholder">
+                            <label for="inputProjectsCountry" class="form-label">{{trans.country}}</label>
+                        </div>
+                        <div class="col-md-6 form-floating">
+                            <input type="text" class="form-control" id="inputProjectsCity" placeholder="placeholder">
+                            <label for="inputProjectsCity" class="form-label">{{trans.city}}</label>
+                        </div>
+                        <div class="col-12 form-floating">
+                            <input type="text" class="form-control" id="inputProjectsTheme" placeholder="placeholder">
+                            <label for="inputProjectsTheme" class="form-label">{{trans.projectTheme}}</label>
+                        </div>
+                        <div class="col-12">
+                            <label for="inputProjectsThemeDescription" class="form-label">{{trans.projectThemeDescription}}</label>
+                            <textarea class="form-control" id="inputProjectsThemeDescription" rows="3"></textarea>
+                        </div>
+                        <div class="col-md-4 form-floating">
+                            <input type="text" class="form-control" id="inputProjectsPhone" placeholder="placeholder">
+                            <label for="inputProjectsPhone" class="form-label">{{trans.phone}}</label>
+                        </div>
+                        <div class="col-md-4 form-floating">
+                            <input type="text" class="form-control" id="inputProjectsEmail" placeholder="placeholder">
+                            <label for="inputProjectsEmail" class="form-label">E-mail</label>
+                        </div>
+                        <div class="col-md-4 form-floating">
+                            <input type="text" class="form-control" id="inputProjectsOtherContacts" placeholder="placeholder">
+                            <label for="inputProjectsOtherContacts" class="form-label">{{trans.otherContacts}}</label>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary" onclick="">{{trans.apply}}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>

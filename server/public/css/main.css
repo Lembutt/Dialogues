@@ -352,6 +352,9 @@ a.geo-button-clickable:hover {
         display: none;
     }
 
+    .events-time-text {
+        font-size: 16pt;
+    }
     .my-menu-buttons {
         display: flex;
         background-color: #c2c5c6;
@@ -389,6 +392,20 @@ a.geo-button-clickable:hover {
     .about-second-para-text {
         padding-top: 20pt;
     }
+
+    .my-del-padding {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    .about-second-para-text {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    .about-second-para-title {
+        text-align: center !important;
+    }
 }
 
 @media screen and (max-width: 650px) {
@@ -398,6 +415,10 @@ a.geo-button-clickable:hover {
 
     .events-event-description-time {
         padding-left: 12px;
+    }
+
+    .events-event-title {
+        font-size: 16pt;
     }
 }
 
