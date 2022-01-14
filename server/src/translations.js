@@ -113,8 +113,8 @@ class i18n {
             en: "Phone"
         },
         otherContacts: {
-            ru: "Другие контакты",
-            en: "Other contacts"
+            ru: "Другое",
+            en: "Other"
         },
         apply: {
             ru: "Подать заявку",
