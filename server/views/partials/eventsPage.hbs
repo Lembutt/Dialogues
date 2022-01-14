@@ -59,6 +59,7 @@
             <div class="d-none d-md-block col-md-3 events-hint events-events-hint text-uppercase">{{trans.eventsEventsHint}}</div>
             <div class="col-12 col-md-9 events-events-text">
                 {{#each evs}}
+                    <div>
                         {{#if ../ru}}
                             <div class="events-event-title col-12">
                                 <span class="events-event-title-date">
@@ -111,6 +112,7 @@
                             </div>
                         {{/if}}
                         <div class="col-12 events-event-empty-row"></div>
+                    </div>
                 {{/each}}
             </div>
         </div>
