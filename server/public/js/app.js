@@ -1,11 +1,13 @@
 const arrowPicture = {
-    "grey": "images/arrow-grey.svg",
-    "blue": "images/arrow-blue.svg"
+    grey: "images/arrow-grey.svg",
+    blue: "images/arrow-blue.svg",
+    green: "images/arrow-green.svg"
 }
 
 const arrowClasses = {
     "my-arrows-grey": "grey",
-    "my-arrows-blue": "blue"
+    "my-arrows-blue": "blue",
+    "my-arrows-green": "green"
 }
 
 function div(val, by){

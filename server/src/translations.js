@@ -143,6 +143,30 @@ class i18n {
         projectThemeDescription: {
             ru: "Описание темы проекта",
             en: "Project theme description"
+        },
+        problemPageTitle: {
+            ru: "Расскажите о проблеме",
+            en: "Tell about the problem"
+        },
+        problemPageDescription: {
+            ru: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!",
+            en: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!"
+        },
+        reportProblemHint: {
+            ru: "Расскажите о проблеме",
+            en: "Tell about the problem"
+        },
+        tell: {
+            ru: "Рассказать!",
+            en: "Tell now!"
+        },
+        problemDescription: {
+            ru: "Описание проблемы",
+            en: "Problem description"
+        },
+        proposeProblemTitle: {
+            ru: "Расскажите нам обо всем.",
+            en: "Tell us everything."
         }
     };
 

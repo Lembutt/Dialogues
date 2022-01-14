@@ -1,0 +1,53 @@
+<div class="modal fade" id="proposeProblem" tabindex="-1" aria-labelledby="proposeProblemLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="proposeProblemLabel">{{trans.proposeProblemTitle}}</h5>
+                <button type="close" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="row g-3">
+                        <div class="form-floating col-md-6">
+                            <input type="text" class="form-control" id="inputProblemsName" placeholder="placeholder">
+                            <label for="inputProblemsName" class="form-label">{{trans.name}}</label>
+                        </div>
+                        <div class="col-md-6 form-floating">
+                            <input type="text" class="form-control" id="inputProblemsProfession" placeholder="placeholder">
+                            <label for="inputProblemsProfession" class="form-label">{{trans.profession}}</label>
+                        </div>
+                        <div class="col-md-6 form-floating">
+                            <input type="text" class="form-control" id="inputProblemsCountry" placeholder="placeholder">
+                            <label for="inputProblemsCountry" class="form-label">{{trans.country}}</label>
+                        </div>
+                        <div class="col-md-6 form-floating">
+                            <input type="text" class="form-control" id="inputProblemsCity" placeholder="placeholder">
+                            <label for="inputProblemsCity" class="form-label">{{trans.city}}</label>
+                        </div>
+                        <div class="col-12">
+                            <label for="inputProblemsThemeDescription" class="form-label">{{trans.problemDescription}}</label>
+                            <textarea class="form-control" id="inputProblemsThemeDescription" rows="3"></textarea>
+                        </div>
+                        <div class="col-md-4 form-floating">
+                            <input type="text" class="form-control" id="inputProblemsPhone" placeholder="placeholder">
+                            <label for="inputProblemsPhone" class="form-label">{{trans.phone}}</label>
+                        </div>
+                        <div class="col-md-4 form-floating">
+                            <input type="text" class="form-control" id="inputProblemsEmail" placeholder="placeholder">
+                            <label for="inputProblemsEmail" class="form-label">E-mail</label>
+                        </div>
+                        <div class="col-md-4 form-floating">
+                            <input type="text" class="form-control" id="inputProblemsOtherContacts" placeholder="placeholder">
+                            <label for="inputProblemsOtherContacts" class="form-label">{{trans.otherContacts}}</label>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary" onclick="">{{trans.apply}}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
