@@ -19,9 +19,9 @@
             <div class="row justify-content-end">
                 {{#if ru}}
                     <div class="col-6 my-lang-button my-lang-button-active" id="ruButton" onclick="translate('ru')">RU</div>
-                    <a class="col-6 my-lang-button" id="enButton" onclick="translate('en')">EN</a>
+                    <a class="col-6 my-lang-button" id="enButton" onclick="myTranslate('en');">EN</a>
                 {{else}}
-                    <div class="col-6 my-lang-button" id="ruButton" onclick="translate('ru')">RU</div>
+                    <div class="col-6 my-lang-button" id="ruButton" onclick="myTranslate('ru')">RU</div>
                     <a class="col-6 my-lang-button my-lang-button-active" id="enButton" onclick="translate('en')">EN</a>
                 {{/if}}
             </div>

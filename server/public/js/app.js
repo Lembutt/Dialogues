@@ -69,7 +69,7 @@ function RemoveLastDirectoryPartOf(the_url) {
     the_arr.pop();
     return( the_arr.join('/') );
 }
-function translate(lang) {
+function myTranslate(lang) {
     window.location = RemoveLastDirectoryPartOf(window.location + '') + '/?lang=' + lang;
 }
 
