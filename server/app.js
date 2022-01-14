@@ -4,6 +4,8 @@ const exphbs = require('express-handlebars')
 const path = require('path');
 const config = require('./.config.json').mongo
 const i18n = require('./src/translations')
+const MonthScroll = require('./src/monthScroll')
+let Date = require('./src/utils')
 let User = require('./src/user')
 
 const { geolocation, project, event, eventApplication} = require('./src/models')
@@ -25,8 +27,8 @@ app.set('view engine', 'hbs');
 app.set('views');
 
 let user = new User;
-
-translations = new i18n
+let monthScroll = new MonthScroll;
+let translations = new i18n;
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -49,28 +51,36 @@ async function start() {
     }
 }
 
-start()
+start();
 
 app.get("/", (req, res) => {
-    user.setLang(req.headers["accept-language"]);
-    res.redirect('/' + (user.lang));
+    let lang = req.query.lang || user.setLang(req.headers["accept-language"]);
+    res.redirect(`/${lang}?month=${monthScroll.__getCurrentMonth()}`);
 });
 
-app.get("/en", (req, res) => {
-    let lang = req.path[1]+req.path[2]
-    res.render('index', {
-        trans: translations.translate(lang),
-        ru: false
-    })
-});
+async function processLangReq (req, res) {
+    const month = req.query.month || monthScroll.__getCurrentMonth();
+    let lang = req.path[1]+req.path[2];
 
-app.get("/ru", (req, res) => {
-    let lang = req.path[1]+req.path[2]
+    const geo = await geolocation.findOne({geoID: 1}).exec();
+    const proj = await project.findOne({geoID: 1, month: month}).exec();
+    let events = await event.find({geoID: 1, month: month}).sort('date').exec();
+    for (const event of events) {
+        event.dateToShow = new Date(event.date).ddmmyy()
+    }
+
     res.render('index', {
         trans: translations.translate(lang),
-        ru: true
-    })
-});
+        ru: lang === 'ru',
+        geolocation: geo.title[lang],
+        scroll: monthScroll.create(lang, month),
+        proj: JSON.parse(JSON.stringify(proj)),
+        events: events
+    });
+}
+
+app.get("/en", processLangReq);
+app.get("/ru", processLangReq);
 
 //test
 app.get("/test", (req, res) => {
@@ -200,7 +210,7 @@ function addEventsData() {
         if(err) return console.log(err);
         console.log("Сохранен объект", eventOne);
     });
-};
+}
 
 // addProjectData()
 // addEventsData()

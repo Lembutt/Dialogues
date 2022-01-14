@@ -66,39 +66,37 @@ class MonthScroll {
             num: 12
         }
     ];
-    currentActiveMonth = this.__getCurrentMonth();
-
     __getCurrentMonth() {
         let date = new Date();
         return date.getMonth() + 1;
-    }
+    };
 
-    create(lang, initMonth=this.currentActiveMonth, changedByButton=false) {
-        this.currentActiveMonth = initMonth;
-        let scrollArray = [
-            this.months[(initMonth - 1)  >= 1 ? (initMonth - 1) : 12],
-            this.months[initMonth],
-            this.months[(initMonth + 1)  <= 12 ? (initMonth + 1) : (initMonth + 1) % 12],
-            this.months[(initMonth + 2)  <= 12 ? (initMonth + 2) : (initMonth + 2) % 12],
-        ];
+    create(lang, initMonth) {
+        initMonth = parseInt(initMonth)
+        const first = this.months[(initMonth - 1) >= 1 ? (initMonth - 1) : 12];
+        const second = this.months[initMonth];
+        const third = this.months[(initMonth + 1) <= 12 ? (initMonth + 1) : (initMonth + 1) % 12];
+        const fourth = this.months[(initMonth + 2) <= 12 ? (initMonth + 2) : (initMonth + 2) % 12];
 
-        let elements = document.getElementsByClassName('month-scroll');
-
-        for (const i of range(0, elements.length - 1)) {
-            elements[i].innerHTML = scrollArray[i][lang];
-            elements[i].setAttribute(
-                'onclick',
-                `monthScroll.create(trans.userLang, ${scrollArray[i].num}, true)`
-            );
-        }
-
-        if (changedByButton) {
-            projEvents.render()
-        }
-    }
+        return {
+            first: {
+                name: first[lang],
+                link: `/${lang}?month=${first.num}#events`,
+            },
+            second: {
+                name: second[lang],
+                link: `/${lang}?month=${second.num}#events`
+            },
+            third: {
+                name: third[lang],
+                link: `/${lang}?month=${third.num}#events`
+            },
+            fourth: {
+                name: fourth[lang],
+                link: `/${lang}?month=${fourth.num}#events`,
+            }
+        };
+    };
 }
-let monthScroll = new MonthScroll();
 
-module.exports = {
-    monthScroll: monthScroll
-}
+module.exports = MonthScroll
