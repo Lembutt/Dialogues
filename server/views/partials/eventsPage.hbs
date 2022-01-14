@@ -44,30 +44,70 @@
                     </p>
                 </div>
         </div>
+    {{else}}
+        no project
     {{/if}}
-
-    {{#if events.length}}
-        <div class="row">
-            <div class="d-none d-md-block col-md-3 events-hint events-events-hint lang-events-events-hint text-uppercase">{{trans.langeventseventshint}}</div>
-            <div class="col-12 col-md-9 events-events-text">
-                {{#each events}}
-                    {{#if ru}}
-                        <div>
-                            <div class="events-event-title col-12">
-                                <span class="events-event-title-date">
-                                    {{events.dateToShow}}
+    <div class="row">
+        <div class="d-none d-md-block col-md-3 events-hint events-events-hint lang-events-events-hint text-uppercase">{{trans.langeventseventshint}}</div>
+        <div class="col-12 col-md-9 events-events-text">
+            {{#each evs}}
+                <div>
+                    {{#if ../ru}}
+                        <div class="events-event-title col-12">
+                            <span class="events-event-title-date">
+                                {{this.dateToShow}}|
+                            </span>
+                            <span class="text-uppercase events-event-title-title">
+                                {{this.title.ru}}
+                                {{#if this.speakerExists}}
+                                    |
+                                {{/if}}
+                            </span>
+                            {{#if this.speakerExists}}
+                                <span class="events-event-title-speaker">
+                                    {{this.speaker.ru}}
                                 </span>
-                                span.text-uppercase.
+                            {{/if}}
+                        </div>
+                        <div class="col-12 row events-event-description">
+                            <div class="col-2 col-md-1 events-event-description-time my-del-padding">
+                                {{this.time}}
+                            </div>
+                            <div class="col-10">
+                                {{this.description.ru}}
                             </div>
                         </div>
                     {{else}}
-
+                        <div class="events-event-title col-12">
+                            <span class="events-event-title-date">
+                                {{this.dateToShow}}|
+                            </span>
+                            <span class="text-uppercase events-event-title-title">
+                                {{this.title.en}}
+                                {{#if this.speakerExists}}
+                                    |
+                                {{/if}}
+                            </span>
+                            {{#if this.speakerExists}}
+                                <span class="events-event-title-speaker">
+                                    {{this.speaker.en}}
+                                </span>
+                            {{/if}}
+                        </div>
+                        <div class="col-12 row events-event-description">
+                            <div class="col-2 col-md-1 events-event-description-time my-del-padding">
+                                {{this.time}}
+                            </div>
+                            <div class="col-10">
+                                {{this.description.en}}
+                            </div>
+                        </div>
                     {{/if}}
-                {{/each}}
-            </div>
+                    <div class="col-12 events-event-empty-row"></div>
+                </div>
+            {{/each}}
         </div>
-    {{/if}}
-
+    </div>
     <div class="row">
         <div class="d-none d-md-block col-md-3 events-hint events-create-event-hint lang-events-create-event-hint text-uppercase">{{trans.langeventscreateeventhint}}</div>
         <div class="col-12 col-md-9 events-create-event-button lang-events-create-event-button"></div>

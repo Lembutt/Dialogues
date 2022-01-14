@@ -18,7 +18,8 @@ const mongoURI = `mongodb+srv://${config.user}:${config.pwd}@${config.url}/${con
 const app = express();
 const hbs = exphbs.create({
     defaultLayout: 'main',
-    extname: 'hbs'
+    extname: 'hbs',
+    allowProtoMethodsByDefault: true
 });
 
 
@@ -62,11 +63,12 @@ async function processLangReq (req, res) {
     const month = req.query.month || monthScroll.__getCurrentMonth();
     let lang = req.path[1]+req.path[2];
 
-    const geo = await geolocation.findOne({geoID: 1}).exec();
-    const proj = await project.findOne({geoID: 1, month: month}).exec();
-    let events = await event.find({geoID: 1, month: month}).sort('date').exec();
-    for (const event of events) {
-        event.dateToShow = new Date(event.date).ddmmyy()
+    const geo = await geolocation.findOne({geoID: 1}).lean().exec();
+    const proj = await project.findOne({geoID: 1, month: month}).lean().exec();
+    let events = await event.find({geoID: 1, month: month}).sort('date').lean().exec();
+    for (let event of events) {
+        event.dateToShow = (new Date(event.date)).ddmmyy();
+        event.speakerExists = !(event.speaker[lang] === ' ');
     }
 
     res.render('index', {
@@ -74,8 +76,8 @@ async function processLangReq (req, res) {
         ru: lang === 'ru',
         geolocation: geo.title[lang],
         scroll: monthScroll.create(lang, month),
-        proj: JSON.parse(JSON.stringify(proj)),
-        events: events
+        evs: events,
+        proj: proj,
     });
 }
 
