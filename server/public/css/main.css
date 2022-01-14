@@ -17,6 +17,8 @@ body {
 
 .my-lang-button {
     transition-duration: 0.15s;
+    text-decoration: none;
+    color: #9b9b9b;
 }
 
 .my-lang-button:hover {
