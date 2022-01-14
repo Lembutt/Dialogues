@@ -350,6 +350,9 @@ a.geo-button-clickable:hover {
 }
 
 @media screen and (max-width: 575px) {
+    .month-scroll {
+        font-size: 16pt;
+    }
     #logo {
         text-align: center;
         padding-top: 25pt;
