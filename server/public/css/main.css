@@ -142,6 +142,10 @@ a.geo-button-clickable:hover {
     padding-right: 0 !important;
 }
 
+.events-event-description-text {
+    text-align: justify;
+}
+
 .page-title-text {
     text-align: center;
     font-weight: bold;
