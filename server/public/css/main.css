@@ -427,6 +427,8 @@ a.geo-button-clickable:hover {
     .events-event-title {
         font-size: 16pt;
     }
+
+
 }
 
 @media screen and (min-width: 576px) {
@@ -454,6 +456,12 @@ a.geo-button-clickable:hover {
 
     .about-text {
         font-size: 17pt;
+    }
+}
+
+@media screen and (max-width: 866px) {
+    #imgPersKudr{
+        display: none;
     }
 }
 
