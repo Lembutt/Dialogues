@@ -120,30 +120,6 @@ class Arrows {
     }
 }
 
-// class Applications {
-//     eventApplicationFormIDs = {
-//         name: "inputEventsName",
-//         profession: "inputEventsProfession",
-//         country: "inputEventsCountry",
-//         city: "inputEventsCity",
-//         theme: "inputEventsTheme",
-//         themeDescription: "inputEventsThemeDescription",
-//         phone: "inputEventsPhone",
-//         email: "inputEventsEmail",
-//         otherContacts: "inputEventsOtherContacts"
-//     };
-//
-//     makeEventApplication () {
-//         let applicationData = {};
-//         for (const form of Object.keys(this.eventApplicationFormIDs)) {
-//             let element = document.getElementById(this.eventApplicationFormIDs[form]);
-//             applicationData[form] = element.value;
-//             element.value = '';
-//         }
-//         server.postEventApplication(applicationData);
-//     }
-// }
-
 let arrows = new Arrows();
 
 function onload () {

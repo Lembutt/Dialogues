@@ -1,120 +1,128 @@
 class i18n {
     translations = {
-        "langproject": {
+        project: {
             ru: "проект",
             en: "project"
         },
-        "langevents": {
+        events: {
             ru: "события",
             en: "participate"
         },
-        "langapplication": {
+        application: {
             ru: "заявка",
             en: "apply"
         },
-        "langarchive": {
+        archive: {
             ru: "архив геолокаций",
             en: "geo archive"
         },
-        "langapplygeo": {
+        applyGeo: {
             ru: "подайте заявку",
             en: "apply now"
         },
-        "langalluvion": {
+        alluvion: {
             ru: "намыв",
             en: "alluvion"
         },
-        "langabouttitlename": {
+        aboutTitleName: {
             ru: "Мобильная терасса &mdash;",
             en: "mobile terrace &mdash;"
         },
-        "langabouttitledescription": {
+        aboutTitleDescription: {
             ru: "место для диалога и развития",
             en: "a place for dialogue and progress"
         },
-        "langabouttext": {
+        aboutText: {
             ru: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!",
             en: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolores dolorum tempore veritatis? Adipisci earum ex libero nam optio quia? Accusantium, commodi corporis eum eveniet iste perspiciatis praesentium recusandae vitae!"
         },
-        "langaboutprojectpagetitle":{
+        aboutProjectPageTitle: {
             ru: "о проекте",
             en: "about project"
         },
-        "langaboutfirstparatext":{
+        aboutFirstParaText:{
             ru: "На насыпной набережной мы предлагаем создать место для диалога &mdash; временную терассу, в которой будут презентоваться различные идеи и макеты по освоению этой части прибрежного пространства. Население, администрация, ученые, деятели культу смогут представить на всеобщее обозрение свои инновационные идеи.",
             en: "On the embankment, we propose to create a place for dialogue &mdash; a temporary terrace, in which various ideas and layouts for the development of this part of the coastal space will be presented. Population, administration, scientists, cult figures will be able to present their innovative ideas to the public."
         },
-        "langaboutsecondparatitle": {
+        aboutSecondParaTitle: {
             ru: "универсальный мобильный проект",
             en: "versatile mobile project"
         },
-        "langaboutsecondparatext": {
+        aboutSecondParaText: {
             ru: "Временная веранда, возникающая на месте вокруг которого ведется полемика с целью рассмаотреть все возможные варианты развития территории с различных точек зрения.",
             en: "A temporary veranda that appears on the spot around which controversy is being conducted in order to consider all possible options for the development of the territory from different points of view. "
         },
-        "langschedulepagetitle": {
+        schedulePageTitle: {
             ru: "события",
             en: "events"
         },
-        "langeventsgeohint": {
+        eventsGeoHint: {
             ru: "геолокация",
             en: "geolocation"
         },
-        "langeventstimehint": {
+        eventsTimeHint: {
             ru: "время",
             en: "time"
         },
-        "langeventsprojecthint": {
+        eventsProjectHint: {
             ru: "проект",
             en: "project"
         },
-        "langeventseventshint": {
+        eventsEventsHint: {
             ru: "мероприятия",
             en: "events"
         },
-        "langeventscreateeventhint": {
+        eventsCreateEventHint: {
             ru: "предложить мероприятие",
             en: "propose an event"
         },
-        "langprofession": {
+        profession: {
             ru: "Профессия",
             en: "Profession"
         },
-        "langname": {
-            ru: "Ваше имя",
-            en: "Your name"
+        name: {
+            ru: "Имя",
+            en: "Name"
         },
-        "langtheme": {
+        theme: {
             ru: "Тема события",
             en: "Event theme"
         },
-        "langthemedescription": {
+        themeDescription: {
             ru: "Описание события",
             en: "Event description"
         },
-        "langcity": {
+        city: {
             ru: "Город",
             en: "City"
         },
-        "langcountry": {
+        country: {
             ru: "Страна",
             en: "Country"
         },
-        "langphone": {
+        phone: {
             ru: "Телефон",
             en: "Phone"
         },
-        "langothercontacts": {
+        otherContacts: {
             ru: "Другие контакты",
             en: "Other contacts"
         },
-        "langapply": {
+        apply: {
             ru: "Подать заявку",
             en: "Apply"
         },
-        "langtitle": {
+        title: {
             ru: "Диалоги",
             en: "Dialogues"
+        },
+        propose: {
+            ru: "Предложить!",
+            en: "Propose!"
+        },
+        proposeEventTitle: {
+            ru: "Предложите мероприятие!",
+            en: "Propose an event!"
         }
     };
 

@@ -70,7 +70,6 @@ async function processLangReq (req, res) {
         event.dateToShow = (new Date(event.date)).ddmmyy();
         event.speakerExists = !(event.speaker[lang] === ' ');
     }
-
     res.render('index', {
         trans: translations.translate(lang),
         ru: lang === 'ru',

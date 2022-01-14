@@ -1,6 +1,6 @@
 <div class="container-fluid pt-sans-font my-page">
     <div class="row" id="events">
-        <div class="col-md-3 my-schedule-page-title page-title-text lang-schedule-page-title text-uppercase">{{trans.langschedulepagetitle}}</div>
+        <div class="col-md-3 my-schedule-page-title page-title-text text-uppercase">{{trans.schedulePageTitle}}</div>
         <div class="d-none d-md-flex col-md-9 my-arrows my-arrows-blue"></div>
     </div>
     <div class="row" id="myAboutFirstRow">
@@ -9,11 +9,11 @@
         </div>
     </div>
     <div class="row">
-        <div class="d-none d-md-block col-md-3 events-hint events-geo-hint lang-events-geo-hint text-uppercase">{{trans.langeventsgeohint}}</div>
-        <div class="d-flex col-12 col-md-9 events-geo-name lang-events-geo-text text-uppercase"> {{geolocation}} </div>
+        <div class="d-none d-md-block col-md-3 events-hint events-geo-hint text-uppercase">{{trans.eventsGeoHint}}</div>
+        <div class="d-flex col-12 col-md-9 events-geo-name text-uppercase"> {{geolocation}} </div>
     </div>
     <div class="row">
-        <div class="d-none d-md-block col-md-3 events-hint events-time-hint lang-events-time-hint text-uppercase">{{trans.langeventstimehint}}</div>
+        <div class="d-none d-md-block col-md-3 events-hint events-time-hint text-uppercase">{{trans.eventsTimeHint}}</div>
         <div class="col-12 col-md-5 events-time-text text-uppercase d-flex">
             <a class="month-scroll" href="{{scroll.first.link}}">{{scroll.first.name}}</a>
             <span>|</span>
@@ -26,8 +26,8 @@
     </div>
     {{#if proj}}
         <div class="row">
-            <div class="d-none d-md-block col-md-3 events-hint events-project-hint lang-events-project-hint text-uppercase">{{trans.langeventsprojecthint}}</div>
-                <div class="col-12 col-md-8 events-project lang-events-project-text">
+            <div class="d-none d-md-block col-md-3 events-hint events-project-hint text-uppercase">{{trans.eventsProjectHint}}</div>
+                <div class="col-12 col-md-8 events-project">
                     <p class="d-flex events-project-title">
                         {{#if ru}}
                             {{proj.title.ru}}
@@ -44,72 +44,76 @@
                     </p>
                 </div>
         </div>
-    {{else}}
-        no project
     {{/if}}
-    <div class="row">
-        <div class="d-none d-md-block col-md-3 events-hint events-events-hint lang-events-events-hint text-uppercase">{{trans.langeventseventshint}}</div>
-        <div class="col-12 col-md-9 events-events-text">
-            {{#each evs}}
-                <div>
-                    {{#if ../ru}}
-                        <div class="events-event-title col-12">
-                            <span class="events-event-title-date">
-                                {{this.dateToShow}}|
-                            </span>
-                            <span class="text-uppercase events-event-title-title">
-                                {{this.title.ru}}
-                                {{#if this.speakerExists}}
-                                    |
-                                {{/if}}
-                            </span>
-                            {{#if this.speakerExists}}
-                                <span class="events-event-title-speaker">
-                                    {{this.speaker.ru}}
+    {{#if evs.length}}
+        <div class="row">
+            <div class="d-none d-md-block col-md-3 events-hint events-events-hint text-uppercase">{{trans.eventsEventsHint}}</div>
+            <div class="col-12 col-md-9 events-events-text">
+                {{#each evs}}
+                    <div>
+                        {{#if ../ru}}
+                            <div class="events-event-title col-12">
+                                <span class="events-event-title-date">
+                                    {{this.dateToShow}}|
                                 </span>
-                            {{/if}}
-                        </div>
-                        <div class="col-12 row events-event-description">
-                            <div class="col-2 col-md-1 events-event-description-time my-del-padding">
-                                {{this.time}}
-                            </div>
-                            <div class="col-10">
-                                {{this.description.ru}}
-                            </div>
-                        </div>
-                    {{else}}
-                        <div class="events-event-title col-12">
-                            <span class="events-event-title-date">
-                                {{this.dateToShow}}|
-                            </span>
-                            <span class="text-uppercase events-event-title-title">
-                                {{this.title.en}}
-                                {{#if this.speakerExists}}
-                                    |
-                                {{/if}}
-                            </span>
-                            {{#if this.speakerExists}}
-                                <span class="events-event-title-speaker">
-                                    {{this.speaker.en}}
+                                <span class="text-uppercase events-event-title-title">
+                                    {{this.title.ru}}
+                                    {{#if this.speakerExists}}
+                                        |
+                                    {{/if}}
                                 </span>
-                            {{/if}}
-                        </div>
-                        <div class="col-12 row events-event-description">
-                            <div class="col-2 col-md-1 events-event-description-time my-del-padding">
-                                {{this.time}}
+                                {{#if this.speakerExists}}
+                                    <span class="events-event-title-speaker">
+                                        {{this.speaker.ru}}
+                                    </span>
+                                {{/if}}
                             </div>
-                            <div class="col-10">
-                                {{this.description.en}}
+                            <div class="col-12 row events-event-description">
+                                <div class="col-2 col-md-1 events-event-description-time my-del-padding">
+                                    {{this.time}}
+                                </div>
+                                <div class="col-10">
+                                    {{this.description.ru}}
+                                </div>
                             </div>
-                        </div>
-                    {{/if}}
-                    <div class="col-12 events-event-empty-row"></div>
-                </div>
-            {{/each}}
+                        {{else}}
+                            <div class="events-event-title col-12">
+                                <span class="events-event-title-date">
+                                    {{this.dateToShow}}|
+                                </span>
+                                <span class="text-uppercase events-event-title-title">
+                                    {{this.title.en}}
+                                    {{#if this.speakerExists}}
+                                        |
+                                    {{/if}}
+                                </span>
+                                {{#if this.speakerExists}}
+                                    <span class="events-event-title-speaker">
+                                        {{this.speaker.en}}
+                                    </span>
+                                {{/if}}
+                            </div>
+                            <div class="col-12 row events-event-description">
+                                <div class="col-2 col-md-1 events-event-description-time my-del-padding">
+                                    {{this.time}}
+                                </div>
+                                <div class="col-10">
+                                    {{this.description.en}}
+                                </div>
+                            </div>
+                        {{/if}}
+                        <div class="col-12 events-event-empty-row"></div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    {{/if}}
+    {{#if proj}}
+        <div class="row">
+        <div class="d-none d-md-block col-md-3 events-hint events-create-event-hint text-uppercase">{{trans.eventsCreateEventHint}}</div>
+        <div class="col-12 col-md-9">
+            <button type="button" class="btn btn-primary btn-lg events-create-event-button" data-bs-toggle="modal" data-bs-target="#proposeEvent">{{trans.propose}}</button>
         </div>
     </div>
-    <div class="row">
-        <div class="d-none d-md-block col-md-3 events-hint events-create-event-hint lang-events-create-event-hint text-uppercase">{{trans.langeventscreateeventhint}}</div>
-        <div class="col-12 col-md-9 events-create-event-button lang-events-create-event-button"></div>
-    </div>
+    {{/if}}
 </div>

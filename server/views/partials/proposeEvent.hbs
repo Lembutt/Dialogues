@@ -1,0 +1,57 @@
+<div class="modal fade" id="proposeEvent" tabindex="-1" aria-labelledby="proposeEventLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="proposeEventLabel">{{trans.proposeEventTitle}}</h5>
+                <button type="close" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="row g-3">
+                        <div class="form-floating col-md-6">
+                            <input type="text" class="form-control" id="inputEventsName" placeholder="placeholder">
+                            <label for="inputEventsName" class="form-label">{{trans.name}}</label>
+                        </div>
+                        <div class="col-md-6 form-floating">
+                            <input type="text" class="form-control" id="inputEventsProfession" placeholder="placeholder">
+                            <label for="inputEventsProfession" class="form-label">{{trans.profession}}</label>
+                        </div>
+                        <div class="col-md-6 form-floating">
+                            <input type="text" class="form-control" id="inputEventsCountry" placeholder="placeholder">
+                            <label for="inputEventsCountry" class="form-label">{{trans.country}}</label>
+                        </div>
+                        <div class="col-md-6 form-floating">
+                            <input type="text" class="form-control" id="inputEventsCity" placeholder="placeholder">
+                            <label for="inputEventsCity" class="form-label">{{trans.city}}</label>
+                        </div>
+                        <div class="col-12 form-floating">
+                            <input type="text" class="form-control" id="inputEventsTheme" placeholder="placeholder">
+                            <label for="inputEventsTheme" class="form-label">{{trans.theme}}</label>
+                        </div>
+                        <div class="col-12">
+                            <label for="inputEventsThemeDescription" class="form-label">{{trans.themeDescription}}</label>
+                            <textarea class="form-control" id="inputEventsThemeDescription" rows="3"></textarea>
+                        </div>
+                        <div class="col-md-4 form-floating">
+                            <input type="text" class="form-control" id="inputEventsPhone" placeholder="placeholder">
+                            <label for="inputEventsPhone" class="form-label">{{trans.phone}}</label>
+                        </div>
+                        <div class="col-md-4 form-floating">
+                            <input type="text" class="form-control" id="inputEventsEmail" placeholder="placeholder">
+                            <label for="inputEventsEmail" class="form-label">E-mail</label>
+                        </div>
+                        <div class="col-md-4 form-floating">
+                            <input type="text" class="form-control" id="inputEventsOtherContacts" placeholder="placeholder">
+                            <label for="inputEventsOtherContacts" class="form-label">{{trans.otherContacts}}</label>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary" onclick="">{{trans.apply}}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
