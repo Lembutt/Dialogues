@@ -167,6 +167,14 @@ class i18n {
         proposeProblemTitle: {
             ru: "Расскажите нам обо всем.",
             en: "Tell us everything."
+        },
+        aboutFirstParaTitle: {
+            ru: "временная терасса",
+            en: "temporary terace"
+        },
+        eventPageDescription: {
+            ru: "Раз в месяц на временной веранде выставляется по одному проекту по заданной проблеме в конкретной геолокации. В рамках проекта проводятся различные мероприятия с целью раскрыть рассматриваемую проблему в различных аспектах. Гости на протяжении врсего времени могут посещать мероприятия в рамках проектов и вносить свои предложения.",
+            en: "Once a month, one project on a given problem in a specific geolocation is exhibited on the temporary veranda. Within the framework of the project, various activities are carried out in order to reveal the problem under consideration in various aspects. Guests can attend project events and make suggestions throughout the entire time."
         }
     };
 

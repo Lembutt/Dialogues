@@ -84,9 +84,8 @@ a.geo-button-clickable:hover {
 
 .my-menu-buttons {
     color: #605f5f;
-    font-size: 100%;
+    font-size: 16pt;
     font-weight: bold;
-    padding-top: 38pt;
 }
 
 .my-main-wave {
@@ -121,7 +120,7 @@ a.geo-button-clickable:hover {
 
 .about-text {
     color: #959696;
-    font-size: 18pt;
+    font-size: 14pt;
     line-height: normal;
     text-align: justify;
 }
@@ -153,9 +152,8 @@ a.geo-button-clickable:hover {
     font-weight: bold;
     font-size: 120%
 }
-.my-about-project-page-title {
-    background-color: #afb3b4;
-}
+
+
 .my-schedule-page-title {
     background-color: #4b989a;
 }
@@ -163,10 +161,18 @@ a.geo-button-clickable:hover {
     background-color: #007d82;
 }
 
-.about-first-para-text {
+.about-first-para {
     padding-top: 100px;
+    text-align: justify;
+}
+
+.about-first-para-text {
     font-size: 18pt;
     text-align: justify;
+}
+
+.my-about-project-page-title {
+    background-color: #afb3b4;
 }
 
 .about-second-para {
@@ -181,6 +187,14 @@ a.geo-button-clickable:hover {
 .about-second-para-text {
     font-size: 18pt;
     text-align: justify !important;
+    background-color: #9b9b9b;
+}
+
+.event-page-description {
+    padding-top: 25px;
+    font-size: 18pt;
+    text-align: justify;
+
 }
 
 .events-hint {
@@ -264,6 +278,13 @@ a.geo-button-clickable:hover {
     height: 30px;
 }
 
+.about-first-para-title {
+    background-color: #afb3b4;
+    color: white;
+    font-weight: bold;
+    font-size: 35pt;
+}
+
 #topHeader {
     height: 45pt;
 }
@@ -293,7 +314,6 @@ a.geo-button-clickable:hover {
 #logo {
     padding-left: 0;
     padding-right: 0;
-    padding-top: 38pt;
 }
 
 #ruButton {
@@ -352,6 +372,25 @@ a.geo-button-clickable:hover {
 }
 
 @media screen and (max-width: 575px) {
+    .my-menu {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .about-second-para-title{
+        text-align: center;
+    }
+
+    .about-first-para {
+        padding-top: 0;
+        text-align: center;
+    }
+
+    .about-second-para-text {
+        padding-top: 0 !important;
+        background-color: white;
+    }
+
     .month-scroll {
         font-size: 12pt;
     }
@@ -403,10 +442,6 @@ a.geo-button-clickable:hover {
         padding-left: 0;
     }
 
-    .about-second-para-text {
-        padding-top: 20pt;
-    }
-
     .my-del-padding {
         padding-left: 12px !important;
         padding-right: 12px !important;
@@ -424,6 +459,10 @@ a.geo-button-clickable:hover {
     .my-lang-button {
         font-size: 12pt;
         font-weight: bold;
+    }
+
+    .my-menu-buttons {
+        font-size: 85%;
     }
 }
 
@@ -445,7 +484,7 @@ a.geo-button-clickable:hover {
 
 @media screen and (min-width: 576px) {
     .my-menu-buttons {
-        font-size: 85%;
+        font-size: 14pt;
     }
 
     .navbar-nav > li{
