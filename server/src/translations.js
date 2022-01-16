@@ -13,8 +13,8 @@ class i18n {
             en: "apply"
         },
         problemReport: {
-            ru: "Расскажите о проблеме",
-            en: "Report problem"
+            ru: "заявка",
+            en: "apply"
         },
         archive: {
             ru: "архив геолокаций",
