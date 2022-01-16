@@ -16,7 +16,7 @@
             buttons = new GeoButtons()
         </script>
         <div class="d-flex col-sm-2 col-md-2 col-lg-1 align-items-center justify-content-end" id="languages">
-            <div class="row justify-content-end">
+            <div class="row ">
                 {{#if ru}}
                     <div class="col-6 my-lang-button my-lang-button-active" id="ruButton" onclick="translate('ru')">RU</div>
                     <a class="col-6 my-lang-button" id="enButton" onclick="myTranslate('en');">EN</a>
@@ -26,11 +26,22 @@
                 {{/if}}
             </div>
         </div>
-        <div class="d-none d-lg-block col-lg-1" ></div>
+        <div class="d-none d-lg-block col-lg-1"></div>
     </div>
     <div class="row align-items-center row-cols-xs-1 row-cols-sm-2 my-header-background" id="bottomHeader">
         <div class="d-none d-lg-block col-lg-1"></div>
-        <div class="col-md-6 col-lg-5" id="logo"><img src="../images/logo.svg" alt="logo"></div>
+        <div class="d-flex justify-content-center d-sm-block col-md-6 col-lg-5" id="logo">
+            <img src="../images/logo.svg" alt="logo">
+            <div class="d-sm-none">
+                {{#if ru}}
+                    <div class="my-lang-button my-lang-button-active" onclick="translate('ru')">RU</div>
+                    <a class="my-lang-button" onclick="myTranslate('en');">EN</a>
+                {{else}}
+                    <div class="my-lang-button" onclick="myTranslate('ru')">RU</div>
+                    <a class="my-lang-button my-lang-button-active" onclick="translate('en')">EN</a>
+                {{/if}}
+            </div>
+        </div>
         <div class="d-sm-none col geo-name-xs my-header-background text-uppercase">{{trans.alluvion}}</div>
         <div class="col-md-6 col-lg-5 text-uppercase my-menu-buttons">
             <nav class="navbar navbar-expand"  style="background-color: #c2c5c6;">
