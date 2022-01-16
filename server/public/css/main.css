@@ -355,6 +355,7 @@ a.geo-button-clickable:hover {
     .month-scroll {
         font-size: 12pt;
     }
+
     #logo {
         text-align: center;
         padding-top: 25pt;
@@ -367,6 +368,7 @@ a.geo-button-clickable:hover {
     .events-time-text {
         font-size: 16pt;
     }
+
     .my-menu-buttons {
         display: flex;
         background-color: #c2c5c6;
@@ -417,6 +419,11 @@ a.geo-button-clickable:hover {
 
     .about-second-para-title {
         text-align: center !important;
+    }
+
+    .my-lang-button {
+        font-size: 12pt;
+        font-weight: bold;
     }
 }
 
