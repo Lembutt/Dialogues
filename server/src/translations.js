@@ -175,6 +175,10 @@ class i18n {
         eventPageDescription: {
             ru: "Раз в месяц на временной веранде выставляется по одному проекту по заданной проблеме в конкретной геолокации. В рамках проекта проводятся различные мероприятия с целью раскрыть рассматриваемую проблему в различных аспектах. Гости на протяжении врсего времени могут посещать мероприятия в рамках проектов и вносить свои предложения.",
             en: "Once a month, one project on a given problem in a specific geolocation is exhibited on the temporary veranda. Within the framework of the project, various activities are carried out in order to reveal the problem under consideration in various aspects. Guests can attend project events and make suggestions throughout the entire time."
+        },
+        firstPageDescription: {
+            ru: "Коллективный проект, направленный на исследование городского пространства на пересечении социального и природного для поиска решений урбанистических задач в формате диалога.",
+            en: "A collective project aimed at exploring the urban space at the intersection of social and natural in order to find solutions to urban problems in a dialogue format."
         }
     };
 
